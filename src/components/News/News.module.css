@@ -1,0 +1,22 @@
+.content__new {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.content__new__img {
+    width: 42px;
+    height: 42px;
+    border-radius: 50px;
+    background-color: orange;
+}
+
+.content__new__dscr {
+
+}
+
+.content__new__likes {
+    padding: 2px 10px;
+    border-radius: 15px;
+    background-color: greenyellow;
+}

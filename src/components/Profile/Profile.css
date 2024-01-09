@@ -1,0 +1,50 @@
+
+.content__img {
+    width: 100%;
+    max-height: 20%;
+}
+
+.content__container {
+    display: flex;
+    margin-top: 20px;
+    gap: 25px;
+}
+
+.content__img_2 {
+    max-width: 20%;
+}
+
+.content__name {
+
+}
+
+.content__list {
+    margin-top: 20px;
+}
+
+.content__box {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.content__post-head {
+    margin-top: 30px;
+}
+
+.content__form {
+    display: flex;
+    margin-top: 20px;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form__btn {
+    cursor: pointer;
+    align-self: flex-end;
+    padding: 5px 10px;
+    border: none;
+    font-size: 28px;
+    color: white;
+    background-color: rgb(24, 173, 24);
+}
+
