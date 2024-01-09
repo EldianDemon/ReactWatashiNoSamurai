@@ -1,6 +1,6 @@
 import React from "react";
 import './Profile.css';
-import News from '../News/News'
+import News from '../Posts/Posts'
 
 const Profile = () => {
     return(
