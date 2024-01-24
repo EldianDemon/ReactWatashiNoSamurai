@@ -1,0 +1,20 @@
+.messeges__container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.messeges__list {
+
+}
+
+.messeges__item {
+    display: flex;
+}
+
+.messeges__img {
+
+}
+
+.messeges__link {
+    color: var(--main-color);
+}

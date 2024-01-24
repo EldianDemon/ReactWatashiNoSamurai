@@ -1,33 +1,28 @@
-import React from 'react';
 import './App.css';
-import Header from './components/Header/Header';
-import Nav from './components/Nav/Nav';
-import Dialogs from './components/Dialogs/Dialogs'
-import Profile from './components/Profile/Profile';
-import Music from './components/Music/Music'
-import News from './components/News/News'
-import Settings from './components/Settings/Settings';
+import Header from './components/Header/Header'
+import Nav from './components/Nav/Nav'
+import Profile from './components/Profile/Profile'
+import Messeges from './components/Messeges/Messeges'
+import Messegesin from './components/Messeges/Messegesin/Messegesin'
+import Friends from './components/Friends/Friends'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-
-
-const App = () =>  {
+const App = (props) => {
   return (
-    <Router>
-      <div className="container App_container">
+    <div className='App'>
+      <Router >
         <Header />
-        <Nav />
-        <div className='App__content'>
+        <Nav friendsPage = {props.state.friendsPage} />
+        <div className='content'>
           <Routes>
-            <Route path='/profile' element={<Profile />} />
-            <Route path='/dialogs' element={<Dialogs />} />
-            <Route path='/music' element={<Music />} />
-            <Route path='/news' element={<News />} />
-            <Route path='/settings' element={<Settings />} />
+            <Route path='/profile' element={<Profile profilePage = {props.state.profilePage} friendsPage = {props.state.friendsPage} AddPost = {props.AddPost} />} />
+            <Route path='/messeges' element={<Messeges messegesPage = {props.state.messegesPage} friendsPage = {props.state.friendsPage} />} />
+              <Route path={`/messeges/${props.state.messegesPage.MessegesData.id}`} element={<Messegesin MessegesinData = {props.state.messegesPage.MessegesinData} />} />
+            <Route path='/friends*' element={<Friends friendsPage = {props.state.friendsPage} />} />
           </Routes>
         </div>
-      </div>
-    </Router>
+      </Router>
+    </div>
   );
 }
 

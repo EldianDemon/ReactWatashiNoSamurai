@@ -1,34 +1,28 @@
-.container {
+html {
+  background-color: rgb(22, 22, 22);
+  padding: 10px;
+}
+
+:root {
+  --main-color: white;
+  --back-color: rgb(48, 48, 48);;
+}
+
+.App {
   display: grid;
-  max-width: 1770px;
+  max-width: 1170px;
   margin: 0 auto;
-  grid-template-areas: 
-  "h h"
-  "n c";
-  grid-template-rows: 120px 1fr;
-  grid-template-columns: 2fr 10fr;
-  grid-gap: 20px;
+  grid-template-areas: "h h" "n s";
+  grid-template-rows: 120px 8fr;
+  grid-template-columns: 2fr 8fr;
+  grid-gap: 10px;
 }
 
-.App__content {
-  grid-area: c;
-  background-color: aquamarine;
+.content {
+  border-radius: 10px;
+  background-color: rgb(48, 48, 48);
 }
 
-body {
-  box-sizing: border-box;
-}
-
-h1,h2,h3,h4,h5,h6 {
-  margin: 0;
-}
-
-ul {
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
-}
-
-textarea {
-  resize: none;
+.container {
+  padding: 20px;
 }

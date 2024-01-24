@@ -1,15 +1,18 @@
-import React from "react"
-import n from './Posts.module.css'
-import New from './Post'
+import React from "react";
+import Post from "./Post/Post";
+import p from "./Posts.module.css";
 
-const News = () => {
+const Posts = (props) => {
+    
+    let PostsOut = props.PostsData.map(
+        el => <Post img={el.img} dscr={el.dscr} />   
+    )
+
     return(
-        <div className={n.content__news}>
-            <New text='You look lonely' likes='10'/>
-            <New text='You look like a good Joe' likes='12'/>
-            <New text='I can fix that' likes='30'/>
-        </div>
+        <ul className={p.posts__list}>
+            {PostsOut}
+        </ul>
     );
 }
 
-export default News;
+export default Posts;

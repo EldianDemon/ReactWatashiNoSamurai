@@ -1,0 +1,33 @@
+.friends__list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+
+.friends__item {
+    display: flex;
+    width: 50%;
+    justify-content: flex-start;
+    align-items: center;
+    flex-grow: 0;
+    gap: 20px;
+}
+
+.friends__head {
+    color: var(--main-color);
+}
+
+.friends__dscr {
+    color: var(--main-color);
+}
+
+.friends__avatar {
+    top: unset;
+}
+
+.friends__info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}

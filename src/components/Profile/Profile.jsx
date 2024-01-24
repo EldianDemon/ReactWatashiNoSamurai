@@ -1,30 +1,40 @@
 import React from "react";
-import './Profile.css';
-import News from '../Posts/Posts'
+import p from './Profile.module.css';
+import Posts from '../Posts/Posts';
+import Createpost from "../Posts/Post/Createpost";
 
-const Profile = () => {
-    return(
-        <section className="sectionContent">
-            <img className="content__img content__img_1" src='https://www.krqe.com/wp-content/uploads/sites/12/2022/12/AdobeStock_81556974.jpeg?w=2560&h=1440&crop=1' alt='wallpaper'></img>
-            <div className="content__container">
-                <img className="content__img content__img_2" src='https://i.pinimg.com/736x/77/b3/a1/77b3a1d79e8e1f836130b915c9715876.jpg' alt='marine'></img>
-                <div className="content__info">
-                    <h3 className="content__name">User Name</h3>
-                    <ul className="content__list">
-                        <li className="content__item">Date of Birth:</li>
-                        <li className="content__item">City:</li>
-                        <li className="content__item">Education:</li>
-                        <li className="content__item">Web Site:</li>
-                    </ul>
+const Profile = (props) => {
+    return (
+        <section className={p.profile}>
+            <div className={p.profile__wallpaper}>
+                <button className={`${p.btn} ${p.wallpaper_btn}`}>
+                    <a href="" className={p.profile__wallpaper__edit__link}>Изменить фон</a>
+                </button>
+            </div>
+            <div className={`container ${p.profile__container}`}>
+                <img src={props.friendsPage.FriendsData[7].useravatar} alt="useravatar" className={p.profile__avatar} />
+                <div className={p.profile__body}>
+                    <h3 className={p.profile__name}>{props.friendsPage.FriendsData[7].username}</h3>
+                    <p className={p.profile__dscr}>
+                        {props.friendsPage.FriendsData[7].userabout}
+                    </p>
+                    <div className={p.profile__btm}>
+                        <div className={p.profile__location}>
+                            <i></i>UserLocation</div><div className={p.profile__job}><i></i>UserJob</div>
+                        <div className={p.profile__info}><i></i>UserInfo</div>
+                    </div>
+                </div>
+                <div className={p.profile_right}>
+                    <button className={`${p.btn} ${p.profile__edit__btn}`}>
+                        <a className={p.profile__edit__link}>Редактировать профиль</a>
+                    </button><button className={`${p.btn} ${p.profile__more}`}>
+                        <a className={p.profile__more__link}>Еще</a><i></i>
+                    </button>
                 </div>
             </div>
-            <div className="content__box">
-                <h3 className="content__post-head">My posts</h3>
-                <form className="content__form">
-                    <textarea className="form__text" placeholder="your news..."></textarea>
-                    <button className="form__btn" type="submit">Send</button>
-                </form>
-                <News />
+            <div className={`container ${p.from__container}`}>
+                <Createpost AddPost = {props.AddPost}/>
+                <Posts PostsData = {props.profilePage.PostsData} />
             </div>
         </section>
     );
