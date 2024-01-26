@@ -16,7 +16,7 @@ const Messeges = (props) => {
             </ul>
             <ul>
                 <li className={m.messege__lastMessege}>
-                        Last messege
+                    Last messege
                 </li>
             </ul>
         </div>

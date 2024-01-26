@@ -1,4 +1,6 @@
-import {renderEntireTree} from '../render';
+let renderEntireTree = () => {
+    console.log('smthng')
+}
 
 let state = {
 
@@ -10,6 +12,10 @@ let state = {
             {id:3, img: 'https://vgtimes.ru/uploads/tags_images/anton-logvinov-5476.jpg', dscr: 'Платформа ПК - это кусок говна'},
             {id:4, img: 'https://vgtimes.ru/uploads/tags_images/anton-logvinov-5476.jpg', dscr: 'Да у меня RTX. И ЧО?'},
         ],
+
+        NewPost: [
+            {text: 'you motherfucker'}
+        ]
 
     },
 
@@ -46,15 +52,31 @@ let state = {
     },
 }
 
-export let AddPost = (text) => {
+export let UpdateNewPost = (UpdateText) => {
+    state.profilePage.NewPost[0].text = UpdateText;
+    renderEntireTree();
+}
+
+export let AddPost = () => {
     let NewPost = {
         id:0, 
         img: 'https://vgtimes.ru/uploads/tags_images/anton-logvinov-5476.jpg', 
-        dscr: text
+        dscr: state.profilePage.NewPost[0].text,
     };
     state.profilePage.PostsData.push(NewPost);
-    renderEntireTree(state)
+    state.profilePage.NewPost[0].text = 'Введите текст'
+    renderEntireTree();
 };
+
+export let AddMessege = (text) => {
+    let NewMessege = {text: text}
+    state.messegesPage.MessegesinData.push(NewMessege)
+    renderEntireTree();
+}
+
+export const subscribe = (observer) => {
+    renderEntireTree = observer;
+}
 
 export default state;
 

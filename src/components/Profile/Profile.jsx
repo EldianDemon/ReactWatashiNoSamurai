@@ -33,7 +33,7 @@ const Profile = (props) => {
                 </div>
             </div>
             <div className={`container ${p.from__container}`}>
-                <Createpost AddPost = {props.AddPost}/>
+                <Createpost AddPost = {props.AddPost} NewPost = {props.profilePage.NewPost} UpdateNewPost = {props.UpdateNewPost}/>
                 <Posts PostsData = {props.profilePage.PostsData} />
             </div>
         </section>
