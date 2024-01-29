@@ -1,6 +1,6 @@
 import React from "react"
 import Messegein from './Messegein/Messegein'
-import { addMessegeActionCreator } from "../../../redux/state";
+import { addMessegeActionCreator } from "../../../redux/messegesReducer";
 
 const Messegesin = (props) => {
 

@@ -1,6 +1,5 @@
-const UPDATE_NEW_POST = 'UPDATE-NEW-POST'
-const ADD_POST = 'ADD-POST'
-
+import profileReducer from "./profileReducer";
+import messegesReducer from "./messegesReducer";
 let store = {
     _state: {
         profilePage: {
@@ -54,58 +53,17 @@ let store = {
     getState() {
         return this._state;
     },
-    // UpdateNewPost(UpdateText) {
-    //     this._state.profilePage.NewPost.text = UpdateText;
-    //     this._subscriber(this._state);
-    // },
-    // AddPost() {
-    //     let NewPost = {
-    //         id:0, 
-    //         img: 'https://vgtimes.ru/uploads/tags_images/anton-logvinov-5476.jpg', 
-    //         dscr: this._state.profilePage.NewPost.text,
-    //     }
-    //     this._state.profilePage.PostsData.push(NewPost);
-    //     this._subscriber(this._state);
-    // },
-    // AddMessege(text) {
-    //     let NewMessege = { text: text };
-    //     this._state.messegesPage.Messegesin.MessegesinData.push(NewMessege)
-    //     this._subscriber(this._state);
-    // },
     subscribe(observer) {
         this._subscriber = observer;
     },
 
     dispatch(action) {
-        if (action.type === UPDATE_NEW_POST) {
-            this._state.profilePage.NewPost.text = action.dscr;
-            this._subscriber(this._state);
-        } else if (action.type === ADD_POST) {
-            let NewPost = {
-                id: 0,
-                img: 'https://vgtimes.ru/uploads/tags_images/anton-logvinov-5476.jpg',
-                dscr: this._state.profilePage.NewPost.text,
-            }
-            this._state.profilePage.PostsData.push(NewPost);
-            this._subscriber(this._state);
-        } else if (action.type === 'ADD-MESSEGE') {
-            let NewMessege = { text: action.dscr };
-            this._state.messegesPage.Messegesin.MessegesinData.push(NewMessege)
-            this._subscriber(this._state);
-        }
+
+        this._state.profilePage = profileReducer(this._state.profilePage, action)
+        this._state.messegesPage.Messegesin = messegesReducer(this._state.messegesPage.Messegesin, action)
+        this._subscriber(this._state);
+        
     },
-}
-
-export const addPostActionCreator = () => {
-    return { type: ADD_POST }
-}
-
-export const updateNewPostActionCreator = (text) => {
-    return { type: UPDATE_NEW_POST, dscr: text }
-}
-
-export const addMessegeActionCreator = (text) => {
-    return {type: 'ADD-MESSEGE', dscr: text}
 }
 
 export default store;
