@@ -1,25 +1,26 @@
 import React from "react";
 import p from '../../Profile/Profile.module.css'
-import { UpdateNewPost } from "../../../redux/state";
+import {addPostActionCreator, updateNewPostActionCreator} from '../../../redux/state'
 
 const Createpost = (props) => {
 
     let NewPost = React.createRef();
 
     let SendPost = () => {
-        let text = NewPost.current.value;
-        props.AddPost(text);
+        let action = addPostActionCreator()
+        props.dispatch(action)
     }
 
     let UpdateText = () => {
-        let text = NewPost.current.value;
-        UpdateNewPost(text)
+        let text = NewPost.current.value
+        let action = updateNewPostActionCreator(text)
+        props.dispatch(action)
     }
 
     return(
         <form action="" className={p.profile__form}>
             <h3>Создать пост</h3>
-            <textarea onChange={UpdateText} value={props.NewPost[0].text} ref={NewPost} className={p.profile__textarea}>
+            <textarea onChange={UpdateText} value={props.profilePage.NewPost.text} ref={NewPost} className={p.profile__textarea}>
                 
             </textarea>
             <button onClick={SendPost} className={`${p.btn} ${p.profile__btn}`}>

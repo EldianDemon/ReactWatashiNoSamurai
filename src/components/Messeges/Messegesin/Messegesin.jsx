@@ -1,9 +1,10 @@
-import React from "react";
+import React from "react"
 import Messegein from './Messegein/Messegein'
+import { addMessegeActionCreator } from "../../../redux/state";
 
 const Messegesin = (props) => {
 
-    let MessegesinOut = props.MessegesinData.map(
+    let MessegesinOut = props.Messegesin.MessegesinData.map(
         (el) => {
             return(
                 <Messegein text={el.text} />
@@ -15,8 +16,8 @@ const Messegesin = (props) => {
     let TextValue = React.createRef()
 
     let AddMessege = () => {
-        let text = TextValue.current.value;
-        props.AddMessege(text);
+        let text = TextValue.current.value
+        props.dispatch(addMessegeActionCreator(text))
     }
 
     return(
