@@ -33,7 +33,6 @@ let store = {
         },
 
         friendsPage: {
-
             FriendsData: [
                 { id: 1, useravatar: 'https://virtus-img.cdnvideo.ru/images/quote-author/plain/19/197b6b3e81310f34eb61f70d60220492.png@jpg', username: 'Антон Логвинов', userabout: 'doesnt have any info' },
                 { id: 2, useravatar: 'https://avatars.mds.yandex.net/get-kinopoisk-post-img/1101693/4078d528153b49bbb0f1eb678d28ba20/960x540', username: 'Киану Ривз', userabout: 'doesnt have any info' },
@@ -44,7 +43,6 @@ let store = {
                 { id: 7, useravatar: 'https://i.redd.it/chsyk2setbg41.jpg', username: 'Екатерина Владимирована', userabout: 'doesnt have any info' },
                 { id: 8, useravatar: 'https://posterspy.com/wp-content/uploads/2019/08/Homelander-Portrait-Smaller.jpg', username: 'Homelander', userabout: 'lorem imptum huipsum' },
             ],
-
         },
     },
     _subscriber() {
