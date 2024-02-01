@@ -19,7 +19,7 @@ const Nav = (props) => {
                 </li>
             </ul>
             <h3 className={n.nav__head}>Последние друзья</h3>
-            <ul className={n.nav__friends}>
+            {/* <ul className={n.nav__friends}>
                 <li className={n.nav__friendsItem}>
                     <img src={props.friendsPage.FriendsData[0].useravatar} alt="" className={`profile__avatar ${n.nav__avatar}`} />
                 </li>
@@ -29,7 +29,7 @@ const Nav = (props) => {
                 <li className={n.nav__friendsItem}>
                     <img src={props.friendsPage.FriendsData[2].useravatar} alt="" className={`profile__avatar ${n.nav__avatar}`} />
                 </li>
-            </ul>
+            </ul> */}
         </nav>
     );
 }

@@ -12,11 +12,11 @@ const Profile = (props) => {
                 </button>
             </div>
             <div className={`container ${p.profile__container}`}>
-                <img src={props.friendsPage.FriendsData[7].useravatar} alt="useravatar" className={p.profile__avatar} />
+                <img  alt="useravatar" className={p.profile__avatar} />
                 <div className={p.profile__body}>
-                    <h3 className={p.profile__name}>{props.friendsPage.FriendsData[7].username}</h3>
+                    <h3 className={p.profile__name}></h3>
                     <p className={p.profile__dscr}>
-                        {props.friendsPage.FriendsData[7].userabout}
+                        
                     </p>
                     <div className={p.profile__btm}>
                         <div className={p.profile__location}>

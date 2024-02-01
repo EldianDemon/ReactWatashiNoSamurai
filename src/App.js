@@ -12,10 +12,10 @@ const App = (props) => {
     <div className='App'>
       <Router >
         <Header />
-        <Nav friendsPage = {props.state.friendsPage} />
+        <Nav />
         <div className='content'>
           <Routes>
-            <Route path='/profile' element={<Profile profilePage = {props.state.profilePage} friendsPage = {props.state.friendsPage} dispatch = {props.dispatch} />} />
+            <Route path='/profile' element={<Profile profilePage = {props.state.profilePage} dispatch = {props.dispatch} />} />
             <Route path='/messeges' element={<Messeges messegesPage = {props.state.messegesPage} friendsPage = {props.state.friendsPage} />} />
               <Route path={`/messeges/${props.state.messegesPage.MessegesData.id}`} element={<Messegesin Messegesin = {props.state.messegesPage.Messegesin} dispatch = {props.dispatch} />} />
             <Route path='/friends*' element={<Friends friendsPage = {props.state.friendsPage} />} />
