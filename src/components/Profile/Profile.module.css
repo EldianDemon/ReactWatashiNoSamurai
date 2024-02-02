@@ -15,6 +15,11 @@ p {
     margin: 0;
 }
 
+img[alt] {
+    color: red;
+    text-align: center;
+}
+
 textarea {
     resize: none;
 }

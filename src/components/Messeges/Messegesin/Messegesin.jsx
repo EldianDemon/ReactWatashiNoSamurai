@@ -1,23 +1,22 @@
 import React from "react"
 import Messegein from './Messegein/Messegein'
-import { addMessegeActionCreator } from "../../../redux/messegesReducer";
 
 const Messegesin = (props) => {
-
-    let MessegesinOut = props.Messegesin.MessegesinData.map(
+    debugger
+    let MessegesinOut = props.messegesPage.Messegesin.MessegesinData.map(
         (el) => {
             return(
                 <Messegein text={el.text} />
             );
         }
-        // el => <Messegein text={el.text} />
     );
 
     let TextValue = React.createRef()
 
-    let AddMessege = () => {
+    let SendMessege = () => {
+        debugger
         let text = TextValue.current.value
-        props.dispatch(addMessegeActionCreator(text))
+        props.addMessege(text)
     }
 
     return(
@@ -26,7 +25,7 @@ const Messegesin = (props) => {
             <textarea ref={TextValue}>
 
             </textarea>
-            <button onClick={AddMessege}>
+            <button onClick={SendMessege}>
 
             </button>
         </ul>

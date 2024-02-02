@@ -1,20 +1,18 @@
 import React from "react";
 import p from '../../Profile/Profile.module.css'
-import {addPostActionCreator, updateNewPostActionCreator} from '../../../redux/profileReducer'
 
 const Createpost = (props) => {
 
     let NewPost = React.createRef();
 
     let SendPost = () => {
-        let action = addPostActionCreator()
-        props.dispatch(action)
+        let text = NewPost.current.value
+        props.addPost(text)
     }
 
     let UpdateText = () => {
         let text = NewPost.current.value
-        let action = updateNewPostActionCreator(text)
-        props.dispatch(action)
+        props.updatePost(text)
     }
 
     return(
