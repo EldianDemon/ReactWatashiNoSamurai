@@ -3,7 +3,7 @@ import p from './Profile.module.css';
 import Posts from '../Posts/Posts';
 import CreatepostContainer from "../Posts/Post/CreatepostContainer";
 
-const Profile = (props) => {
+const Profile = () => {
     return (
         <section className={p.profile}>
             <div className={p.profile__wallpaper}>
@@ -33,8 +33,8 @@ const Profile = (props) => {
                 </div>
             </div>
             <div className={`container ${p.from__container}`}>
-                <CreatepostContainer store = {props.store} />
-                <Posts PostsData = {props.store.getState().profilePage.PostsData} />
+                <CreatepostContainer />
+                <Posts />
             </div>
         </section>
     );

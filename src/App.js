@@ -15,10 +15,10 @@ const App = (props) => {
         <Nav />
         <div className='content'>
           <Routes>
-            <Route path='/profile' element={<Profile store = {props.store} />} />
-            <Route path='/messeges' element={<Messeges messegesPage = {props.state.messegesPage} friendsPage = {props.state.friendsPage} />} />
-              <Route path={`/messeges/${props.state.messegesPage.MessegesData.id}`} element={<MessegesinContainer store = {props.store} />} />
-            <Route path='/friends*' element={<Friends friendsPage = {props.state.friendsPage} />} />
+            <Route path='/profile' element={<Profile />} />
+            <Route path='/messeges' element={<Messeges />} />
+              {/* <Route path={`/messeges/${props.state.messegesPage.MessegesData.id}`} element={<MessegesinContainer />} /> */}
+            <Route path='/friends*' element={<Friends />} />
           </Routes>
         </div>
       </Router>

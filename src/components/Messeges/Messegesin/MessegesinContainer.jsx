@@ -1,15 +1,21 @@
 import React from "react"
 import Messegesin from "./Messegesin";
 import { addMessegeActionCreator } from "../../../redux/messegesReducer";
+import StoreContext from "../../../StoreContext";
 
-const MessegesinContainer = (props) => {
+const MessegesinContainer = () => {
 
-    let addMessege = (text) => {
-        let action = addMessegeActionCreator(text)
-        props.store.dispatch(action)
-    }
-
-    return <Messegesin messegesPage={props.store.getState().messegesPage} addMessege={addMessege}/>
+    <StoreContext.Consumer>
+        {
+            (store) => {
+                let addMessege = (text) => {
+                    let action = addMessegeActionCreator(text)
+                    store.dispatch(action)
+                }
+                return <Messegesin messegesPage={store.getState().messegesPage} addMessege={addMessege}/>
+            }
+        }
+    </StoreContext.Consumer>
 }
 
 export default MessegesinContainer;
