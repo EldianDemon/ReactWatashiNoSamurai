@@ -5,17 +5,20 @@ import StoreContext from "../../../StoreContext";
 
 const MessegesinContainer = () => {
 
-    <StoreContext.Consumer>
-        {
-            (store) => {
-                let addMessege = (text) => {
-                    let action = addMessegeActionCreator(text)
-                    store.dispatch(action)
+    return (
+        <StoreContext.Consumer>
+            {
+                (store) => {
+                    let addMessege = (text) => {
+                        let action = addMessegeActionCreator(text)
+                        store.dispatch(action)
+                    }
+                    return <Messegesin MessegesinData={store.getState().messegesPage.Messegesin.MessegesinData} messegesPage={store.getState().messegesPage} addMessege={addMessege} />
                 }
-                return <Messegesin messegesPage={store.getState().messegesPage} addMessege={addMessege}/>
             }
-        }
-    </StoreContext.Consumer>
+        </StoreContext.Consumer>
+    );
+
 }
 
 export default MessegesinContainer;

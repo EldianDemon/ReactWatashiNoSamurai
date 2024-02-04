@@ -4,7 +4,6 @@ import p from "./Posts.module.css";
 import StoreContext from "../../StoreContext";
 
 const Posts = () => {
-
     return (
         <StoreContext.Consumer>
             {
