@@ -4,15 +4,15 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import store from './redux/redux_store';
-import StoreContext from './StoreContext';
+import { Provider } from './StoreContext';
 
-let renderEntireTree = (state) => {
+let renderEntireTree = () => {
   const root = ReactDOM.createRoot(document.getElementById('root'));
   root.render(
     <React.StrictMode>
-      <StoreContext.Provider value={store}>
+      <Provider store={store}>
         <App />
-      </StoreContext.Provider>
+      </Provider>
     </React.StrictMode>
   );
 }
