@@ -5,7 +5,7 @@ import m from './Messeges.module.css'
 
 const Messeges = (props) => {
 
-    let MessegesOut = props.messegesPage.MessegesData.map(
+    let MessegesOut = props.MessegesData.map(
         el => <Messege username={el.username} lastmessege={el.lastmessege} />
     );
 

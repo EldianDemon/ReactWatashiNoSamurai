@@ -4,7 +4,7 @@ import f from './Friends.module.css'
 
 const Friends = (props) => {
 
-    const FriendsOut = props.friendsPage.FriendsData.map(
+    const FriendsOut = props.FriendsData.map(
         el => <Friend id={el.id} useravatar={el.useravatar} username={el.username} userabout={el.userabout} />
     )
 
