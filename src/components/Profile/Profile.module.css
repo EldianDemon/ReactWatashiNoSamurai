@@ -86,6 +86,7 @@ textarea {
     object-fit:cover;
     object-position: 50% 20%;
     border-radius: 50%;
+    background-color: grey;
 }
 
 .profile__body {
