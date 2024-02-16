@@ -1,13 +1,14 @@
+import React from "react";
 import Posts from "./Posts";
 import { connect } from "react-redux";
 
-let mapStateToProps = (state) => {
+const mapStateToProps = (state) => {
     return {
         PostsData: state.profilePage.PostsData
     }
 }
 
-let mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch) => {
     return {
         
     }

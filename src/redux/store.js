@@ -56,7 +56,7 @@ let store = {
     },
 
     dispatch(action) {
-
+        
         this._state.profilePage = profileReducer(this._state.profilePage, action)
         this._state.messegesPage.Messegesin = messegesReducer(this._state.messegesPage.Messegesin, action)
         this._subscriber(this._state);
