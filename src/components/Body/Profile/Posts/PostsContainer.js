@@ -1,9 +1,7 @@
-import React from "react";
 import Posts from "./Posts";
 import { connect } from "react-redux";
 
 let mapStateToProps = (state) => {
-    debugger
     return {
         PostsData: state.profilePage.PostsData
     }
@@ -11,7 +9,7 @@ let mapStateToProps = (state) => {
 
 let mapDispatchToProps = (dispatch) => {
     return {
-
+        
     }
 }
 

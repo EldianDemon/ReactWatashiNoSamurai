@@ -2,6 +2,7 @@ const UPDATE_NEW_POST = 'UPDATE-NEW-POST'
 const ADD_POST = 'ADD-POST'
 
 const initialState = {
+    
     PostsData: [
         { id: 1, img: 'https://vgtimes.ru/uploads/tags_images/anton-logvinov-5476.jpg', dscr: 'Вы все ГОВНО' },
         { id: 2, img: 'https://vgtimes.ru/uploads/tags_images/anton-logvinov-5476.jpg', dscr: 'Ты то хуесосина куда лезешь?' },

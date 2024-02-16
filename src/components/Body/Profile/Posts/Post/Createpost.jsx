@@ -1,5 +1,5 @@
 import React from "react";
-import p from '../../Profile/Profile.module.css'
+import p from '../../Profile.module.css'
 
 const Createpost = (props) => {
 
@@ -18,7 +18,7 @@ const Createpost = (props) => {
     return(
         <form action="" className={p.profile__form}>
             <h3>Создать пост</h3>
-            <textarea onChange={UpdateText} value={props.profilePage.NewPost.text} ref={NewPost} className={p.profile__textarea}>
+            <textarea onChange={UpdateText} value={props.NewPost.text} ref={NewPost} className={p.profile__textarea}>
                 
             </textarea>
             <button onClick={SendPost} className={`${p.btn} ${p.profile__btn}`}>

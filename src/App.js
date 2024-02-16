@@ -1,13 +1,12 @@
 import './App.css';
 import Header from './components/Header/Header'
 import Nav from './components/Nav/Nav'
-import Profile from './components/Profile/Profile'
-import Messeges from './components/Messeges/Messeges'
-import MessegesinContainer from './components/Messeges/Messegesin/MessegesinContainer';
-import Friends from './components/Friends/Friends'
+import Profile from './components/Body/Profile/Profile'
+import MessegesContainer from './components/Body/Messeges/MessegesContainer'
+import FriendsContainer from './components/Body/Friends/FriendsContainer';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-const App = (props) => {
+const App = () => {
   return (
     <div className='App'>
       <Router >
@@ -15,10 +14,9 @@ const App = (props) => {
         <Nav />
         <div className='content'>
           <Routes>
-            <Route path='/profile' element={<Profile store = {props.store} />} />
-            <Route path='/messeges' element={<Messeges messegesPage = {props.state.messegesPage} friendsPage = {props.state.friendsPage} />} />
-              <Route path={`/messeges/${props.state.messegesPage.MessegesData.id}`} element={<MessegesinContainer store = {props.store} />} />
-            <Route path='/friends*' element={<Friends friendsPage = {props.state.friendsPage} />} />
+            <Route path='/profile' element={<Profile />} />
+            <Route path='/messeges' element={<MessegesContainer />} />
+            <Route path='/friends*' element={<FriendsContainer />} />
           </Routes>
         </div>
       </Router>
