@@ -1,20 +1,42 @@
-.messeges__container {
-    display: flex;
-    justify-content: space-between;
-}
-
 .messeges__list {
-
+    display: flex;
+    margin: 0;
+    padding: 0;
+    flex-direction: column;
+    list-style-type: none;
 }
 
 .messeges__item {
+    padding: 5px 10px;
+    border-radius: 8px;
+    background-color: #00000080;
+}
+
+.messeges__item:not(:first-child) {
+    margin-top: 10px;
+}
+
+.messeges__item_t {
+    align-self: flex-start;
+    color: green;
+}
+
+.messeges__item_f {
+    align-self: flex-end;
+    color: red;
+}
+
+.messeges__form {
     display: flex;
+    margin-top: 35px;
+    flex-direction: column;
 }
 
-.messeges__img {
+.messeges__text {
 
 }
 
-.messeges__link {
-    color: var(--main-color);
+.messeges__btn {
+    align-self: center;
+    margin-top: 10px;
 }

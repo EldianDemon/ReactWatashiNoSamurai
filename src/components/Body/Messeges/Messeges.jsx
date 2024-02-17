@@ -1,26 +1,33 @@
 import React from "react";
-import Messege from './Messege/Messege'
 import m from './Messeges.module.css'
-
+import Messege from "./Messege/Messege";
 
 const Messeges = (props) => {
-
+    debugger
     let MessegesOut = props.MessegesData.map(
-        el => <Messege username={el.username} lastmessege={el.lastmessege} />
-    );
+        el => <li className={el.owner ? `${m.messeges__item} ${m.messeges__item_t}` : `${m.messeges__item} ${m.messeges__item_f}`}><Messege text={el.text} /></li>
+    )
+
+    let MessegeText = React.createRef()
+
+    let AddMessege = () => {
+        let text = MessegeText.current.value
+        props.AddMessege(text)
+    }
 
     return (
-        <div className={`container ${m.messeges__container}`}>
-            <ul className={m.messeges__list}>
-                {MessegesOut}
-            </ul>
-            <ul>
-                <li className={m.messege__lastMessege}>
-                    Last messege
-                </li>
-            </ul>
-        </div>
-    );
+        <section>
+            <div className="container">
+                <ul className={m.messeges__list}>
+                    {MessegesOut}
+                </ul>
+                <form action="" className={m.messeges__form}>
+                    <textarea ref={MessegeText} className={m.messeges__text}></textarea>
+                    <button onClick={AddMessege} className={m.messeges__btn}>Отправить</button>
+                </form>
+            </div>
+        </section>
+    )
 }
 
 export default Messeges;

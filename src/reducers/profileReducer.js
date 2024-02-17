@@ -10,23 +10,25 @@ const initialState = {
         { id: 4, img: 'https://vgtimes.ru/uploads/tags_images/anton-logvinov-5476.jpg', dscr: 'Да у меня RTX. И ЧО?' },
     ],
 
-    NewPost: { text: 'you motherfucker' },
+    NewPost: { text: 'write some shit' },
 
 };
 
 const profileReducer = (state = initialState, action) => {
 
     switch (action.type) {
-
+        
         case ADD_POST: {
-            let NewPost = {
-                id: 0,
-                img: 'https://vgtimes.ru/uploads/tags_images/anton-logvinov-5476.jpg',
-                dscr: state.NewPost.text,
-            }
             let stateCopy = {...state}
             stateCopy.PostsData = [...state.PostsData]
-            state.PostsData.push(NewPost);
+            stateCopy.NewPost = {...state.NewPost}
+            let newPost = {
+                id: 20,
+                img: 'https://vgtimes.ru/uploads/tags_images/anton-logvinov-5476.jpg',
+                dscr: stateCopy.NewPost.text,
+            }
+            stateCopy.PostsData.push(newPost);
+            debugger
             return stateCopy
         }
 

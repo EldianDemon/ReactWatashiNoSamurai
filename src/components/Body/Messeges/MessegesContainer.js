@@ -1,15 +1,18 @@
 import Messeges from "./Messeges";
 import { connect } from "react-redux";
+import { addMessegeActionCreator } from "../../../reducers/messegesReducer";
 
-let mapStateToProps = (state) => {
+const mapStateToProps = (state) => {
     return {
         MessegesData: state.messegesPage.MessegesData
     }
 }
 
-let mapDispatchToProps = () => {
+const mapDispatchToProps = (dispatch) => {
     return {
-
+        AddMessege: (text) => {
+            dispatch(addMessegeActionCreator(text))
+        }
     }
 }
 

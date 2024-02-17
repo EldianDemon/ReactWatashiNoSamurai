@@ -12,7 +12,7 @@ const Profile = () => {
                 </button>
             </div>
             <div className={`container ${p.profile__container}`}>
-                <img  alt="useravatar" className={p.profile__avatar} />
+                <img  alt="" className={p.profile__avatar} />
                 <div className={p.profile__body}>
                     <h3 className={p.profile__name}></h3>
                     <p className={p.profile__dscr}>

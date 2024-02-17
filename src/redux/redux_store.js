@@ -3,12 +3,16 @@ import profileReducer from "../reducers/profileReducer";
 import messegesReducer from "../reducers/messegesReducer";
 import friendsReducer from '../reducers/friendsReducer'
 
-let reducers = combineReducers({
+const reducers = combineReducers(
+    {
         profilePage: profileReducer,
         messegesPage: messegesReducer,
         friendsPage: friendsReducer,
-    });
+    }
+    );
 
-let store = createStore(reducers);
+const store = createStore(reducers);
+
+window.store = store
 
 export default store;
