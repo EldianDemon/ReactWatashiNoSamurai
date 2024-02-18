@@ -3,7 +3,7 @@ import m from './Messeges.module.css'
 import Messege from "./Messege/Messege";
 
 const Messeges = (props) => {
-    debugger
+    
     let MessegesOut = props.MessegesData.map(
         el => <li className={el.owner ? `${m.messeges__item} ${m.messeges__item_t}` : `${m.messeges__item} ${m.messeges__item_f}`}><Messege text={el.text} /></li>
     )

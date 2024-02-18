@@ -16,9 +16,12 @@ const initialState = {
 const messegesReducer = (state = initialState, action) => {
     if (action.type === 'ADD-MESSEGE') {
         let newMessege = { id: action.id, owner: true, text: action.text }
-        state.push(newMessege)
+        let stateCopy = {...state}
+        stateCopy.MessegesData = [...state.MessegesData]
+        stateCopy.MessegesData.push(newMessege)
+        return stateCopy
     }
-    return state
+    else return state
 }
 
 export const addMessegeActionCreator = (text) => {
