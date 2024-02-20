@@ -3,25 +3,21 @@ import p from '../../Profile.module.css'
 
 const Createpost = (props) => {
 
-    let NewPost = React.createRef();
+    let TextUpdate = React.createRef();
 
-    let SendPost = () => {
-        let text = NewPost.current.value
+    let ClickAddPost = () => {
+        debugger
+        let text = TextUpdate.current.value
         props.addPost(text)
-    }
-
-    let UpdateText = () => {
-        let text = NewPost.current.value
-        props.updatePost(text)
     }
 
     return(
         <form action="" className={p.profile__form}>
             <h3>Создать пост</h3>
-            <textarea onChange={UpdateText} value={props.NewPost.text} ref={NewPost} className={p.profile__textarea}>
+            <textarea ref={TextUpdate} className={p.profile__textarea}>
                 
             </textarea>
-            <button onClick={SendPost} className={`${p.btn} ${p.profile__btn}`}>
+            <button onClick={ClickAddPost} className={`${p.btn} ${p.profile__btn}`}>
                 Отправить
             </button>
         </form>

@@ -17,12 +17,12 @@
 }
 
 .messeges__item_t {
-    align-self: flex-start;
+    align-self: flex-end;
     color: green;
 }
 
 .messeges__item_f {
-    align-self: flex-end;
+    align-self: flex-start;
     color: red;
 }
 

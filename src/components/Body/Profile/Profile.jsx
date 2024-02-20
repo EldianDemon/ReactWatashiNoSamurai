@@ -1,9 +1,9 @@
 import React from "react";
 import p from './Profile.module.css';
-import CreatepostContainer from "./Posts/Post/CreatepostContainer";
-import PostsContainer from "./Posts/PostsContainer";
+import Createpost from "./Posts/Post/Createpost";
+import Posts from "./Posts/Posts";
 
-const Profile = () => {
+const Profile = (props) => {
     return (
         <section className={p.profile}>
             <div className={p.profile__wallpaper}>
@@ -33,8 +33,8 @@ const Profile = () => {
                 </div>
             </div>
             <div className={`container ${p.from__container}`}>
-                <CreatepostContainer />
-                <PostsContainer />
+                <Createpost addPost = {props.addPost}/>
+                <Posts PostsData = {props.PostsData} />
             </div>
         </section>
     );

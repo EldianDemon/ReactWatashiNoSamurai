@@ -1,6 +1,6 @@
-import { combineReducers, legacy_createStore as createStore } from "redux";
-import profileReducer from "../reducers/profileReducer";
-import messegesReducer from "../reducers/messegesReducer";
+import { combineReducers, legacy_createStore as createStore } from 'redux';
+import profileReducer from '../reducers/profileReducer';
+import messegesReducer from '../reducers/messegesReducer';
 import friendsReducer from '../reducers/friendsReducer'
 
 const reducers = combineReducers({
@@ -10,7 +10,5 @@ const reducers = combineReducers({
     });
 
 const store = createStore(reducers);
-
-
 
 export default store;

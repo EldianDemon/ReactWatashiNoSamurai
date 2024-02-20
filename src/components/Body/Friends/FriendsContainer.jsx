@@ -1,5 +1,6 @@
 import Friends from "./Friends";
 import { connect } from "react-redux";
+import { addFriendCreator } from "../../../reducers/friendsReducer";
 
 let mapStateToProps = (state) => {
     return {
@@ -9,7 +10,9 @@ let mapStateToProps = (state) => {
 
 let mapDispatchToProps = (dispatch) => {
     return {
-
+        addFriend: (username) => {
+            dispatch(addFriendCreator(username))
+        }
     }
 }
 

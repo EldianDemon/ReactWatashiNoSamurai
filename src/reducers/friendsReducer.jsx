@@ -1,3 +1,5 @@
+const ADD_FRIEND = 'ADD-FRIEND'
+
 const initialState = {
     FriendsData: [
         { id: 1, useravatar: 'https://virtus-img.cdnvideo.ru/images/quote-author/plain/19/197b6b3e81310f34eb61f70d60220492.png@jpg', username: 'Антон Логвинов', userabout: 'doesnt have any info' },
@@ -12,7 +14,30 @@ const initialState = {
 }
 
 const friendsReducer = (state = initialState, action) => {
-    return state
+    switch (action.type) {
+        case ADD_FRIEND: {
+            let copyState = {
+                ...state,
+                FriendsData: [
+                    {
+                        id: 10,
+                        useravatar: 'https://posterspy.com/wp-content/uploads/2019/08/Homelander-Portrait-Smaller.jpg',
+                        username: action.username,
+                        userabout: 'lorem imptum huipsum'
+                    },
+                    ...state.FriendsData
+                ]
+            }
+            return copyState
+        }
+        default: {
+            return state;
+        }
+    }
+};
+
+export const addFriendCreator = (username) => {
+    return { type: ADD_FRIEND, username: username }
 }
 
 export default friendsReducer

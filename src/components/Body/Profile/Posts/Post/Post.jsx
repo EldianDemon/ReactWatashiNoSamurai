@@ -5,7 +5,7 @@ const Post = (props) => {
     return (
         <li className={p.posts__item}>
             <img src={props.img} alt="UserAvatar" className={p.posts__avatar} />
-            <p className={p.posts__dscr}>{props.dscr}</p>
+            <p className={p.posts__dscr}>{props.text}</p>
         </li>
     );
 }

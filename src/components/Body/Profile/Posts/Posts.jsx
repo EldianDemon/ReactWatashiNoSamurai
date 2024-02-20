@@ -3,9 +3,9 @@ import Post from "./Post/Post";
 import p from "./Posts.module.css";
 
 const Posts = (props) => {
-    debugger    
+  
     let PostsOut = props.PostsData.map(
-        el => <Post img={el.img} dscr={el.dscr} />   
+        el => <Post key={el.id} img={el.img} text={el.text} />   
     )
 
     return(
