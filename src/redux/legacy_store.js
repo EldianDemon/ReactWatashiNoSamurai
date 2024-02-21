@@ -1,5 +1,4 @@
-import profileReducer from "./profileReducer";
-import messegesReducer from "./messegesReducer";
+
 let store = {
     _state: {
         profilePage: {
@@ -12,6 +11,7 @@ let store = {
             ],
 
             NewPost: { text: 'you motherfucker' },
+
         },
 
         messegesPage: {

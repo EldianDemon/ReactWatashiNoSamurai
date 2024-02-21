@@ -1,9 +1,20 @@
-import React from "react";
+import React from 'react';
+import Post from './Post/Post';
 import p from './Profile.module.css';
-import Createpost from "./Posts/Post/Createpost";
-import Posts from "./Posts/Posts";
 
 const Profile = (props) => {
+
+    let PostsOut = props.PostsData.map(
+        el => <li><Post text={el.text} /></li>
+    )
+
+    let RefText = React.createRef()
+
+    let ClickAddPost = () => {
+        let text = RefText.current.value
+        props.addPost(text)
+    }
+
     return (
         <section className={p.profile}>
             <div className={p.profile__wallpaper}>
@@ -12,11 +23,11 @@ const Profile = (props) => {
                 </button>
             </div>
             <div className={`container ${p.profile__container}`}>
-                <img  alt="" className={p.profile__avatar} />
+                <img alt="" className={p.profile__avatar} />
                 <div className={p.profile__body}>
                     <h3 className={p.profile__name}></h3>
                     <p className={p.profile__dscr}>
-                        
+
                     </p>
                     <div className={p.profile__btm}>
                         <div className={p.profile__location}>
@@ -33,8 +44,18 @@ const Profile = (props) => {
                 </div>
             </div>
             <div className={`container ${p.from__container}`}>
-                <Createpost addPost = {props.addPost}/>
-                <Posts PostsData = {props.PostsData} />
+                <div className={p.profile__form}>
+                    <h3>Создать пост</h3>
+                    <textarea ref={RefText} className={p.profile__textarea}>
+
+                    </textarea>
+                    <button onClick={ClickAddPost} className={`${p.btn} ${p.profile__btn}`}>
+                        Отправить
+                    </button>
+                </div>
+                <ul className={p.posts__list}>
+                    {PostsOut}
+                </ul>
             </div>
         </section>
     );

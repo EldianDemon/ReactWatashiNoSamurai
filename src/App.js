@@ -4,7 +4,7 @@ import Nav from './components/Nav/Nav'
 import ProfileContainer from './components/Body/Profile/ProfileContainer';
 import MessegesContainer from './components/Body/Messeges/MessegesContainer';
 import FriendsContainer from './components/Body/Friends/FriendsContainer';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 
 const App = () => {
   return (

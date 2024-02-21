@@ -24,10 +24,6 @@ textarea {
     resize: none;
 }
 
-.profile {
-   
-}
-
 .profile__wallpaper {
     position: relative;
     display: flex;
@@ -40,10 +36,6 @@ textarea {
     background-color: rgb(172, 172, 172);
 }
 
-.container {
-    
-}
-
 .btn {
     cursor: pointer;
     padding: 5px 15px;
@@ -52,14 +44,6 @@ textarea {
     color: var(--main-color);
     background-color: grey;
     border: unset;
-}
-
-.wallpaper_btn {
-    
-}
-
-.profile__wallpaper__edit__link {
-    
 }
 
 .profile__container {
@@ -72,10 +56,6 @@ textarea {
     border-top-right-radius: 15px;
     color: var(--main-color);
     background-color: var(--back-color);
-}
-
-.profile__img {
-   
 }
 
 .profile__avatar {
@@ -108,40 +88,12 @@ textarea {
     gap: 20px;
 }
 
-.profile__location {
-
-}
-
-.profile__job {
-
-}
-
-.profile__info {
-
-}
-
 .profile_right {
     display: flex;
     gap: 10px;
     justify-content: flex-end;
     align-items: flex-start;
     flex: 1 0 auto;
-}
-
-.profile__edit__btn {
-
-}
-
-.profile__edit__link {
-
-}
-
-.profile__more {
-
-}
-
-.profile__more__link {
-
 }
 
 .profile__form {
