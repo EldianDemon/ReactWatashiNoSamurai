@@ -16,7 +16,7 @@ const initialState = {
 const friendsReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_FRIEND: {
-            let copyState = {
+            let stateCopy = {
                 ...state,
                 FriendsData: [
                     {
@@ -28,7 +28,7 @@ const friendsReducer = (state = initialState, action) => {
                     ...state.FriendsData
                 ]
             }
-            return copyState
+            return stateCopy
         }
         default: {
             return state;

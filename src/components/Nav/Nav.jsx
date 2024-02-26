@@ -17,6 +17,9 @@ const Nav = (props) => {
                 <li className={n.nav__item}>
                     <NavLink to="/friends" className={({isActive}) => isActive ? `${n.active}`: n.nav__link}>Друзья</NavLink>
                 </li>
+                <li className={n.nav__item}>
+                    <NavLink to="/users" className={({isActive}) => isActive ? `${n.active}`: n.nav__link}>Пользователи</NavLink>
+                </li>
             </ul>
             <h3 className={n.nav__head}>Последние друзья</h3>
             {/* <ul className={n.nav__friends}>

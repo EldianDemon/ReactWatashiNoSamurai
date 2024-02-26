@@ -16,7 +16,7 @@ const initialState = {
 const profileReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_POST: {
-            let copyState = {
+            let stateCopy = {
                 ...state,
                 PostsData: [
                     {
@@ -28,7 +28,7 @@ const profileReducer = (state = initialState, action) => {
                     ...state.PostsData
                 ]
             }
-            return copyState
+            return stateCopy
         }
         default: {
             return state;
