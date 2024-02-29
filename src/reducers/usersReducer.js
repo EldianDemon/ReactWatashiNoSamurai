@@ -4,54 +4,62 @@ let GET_USERS = 'GET-USERS'
 
 const initialState = {
     users: [
-        { id: 1, username: 'Eldian_Demon', followed: true },
-        { id: 2, username: 'Твердый кал', followed: false },
-        { id: 3, username: 'Хейтер Якудзы', followed: true },
+        // {id: 1, followed: true, name: 'John'},
+        // {id: 2, followed: true, name: 'John'},
+        // {id: 3, followed: true, name: 'John'},
+        // {id: 4, followed: true, name: 'John'},
     ]
 }
 
 const usersReducer = (state = initialState, action) => {
-    switch (action.type) {
+    switch(action.type) {
         case FOLLOW:
             return {
                 ...state,
-                users: state.users.map(el => {
-                    if (action.id === el.id) {
-                        return { ...el, followed: true }
+                users: state.users.map(
+                    el => {
+                        if (el.id === action.id) {
+                            return {...el, followed: true}
+                        }
+                        else return el
                     }
-                    else return el
-                })
+                )
             }
 
-        case UNFOLLOW: 
+        case UNFOLLOW:
             return {
                 ...state,
-                users: state.users.map(el => {
-                    if (action.id === el.id) {
-                        return { ...el, followed: false }
+                users: state.users.map(
+                    el => {
+                        if (el.id === action.id) {
+                            return {...el, followed: false}
+                        }
+                        else return el
                     }
-                    else return el
-            })
-        }
-        
+                )
+            }
+
         case GET_USERS:
             return {
-                ...state, users: [ ...state.users, ...action.users ]
+                ...state,
+                users: [...action.users, ...state.users]
             }
+
+        default:
+            return state
     }
-    return state
 }
 
 export const addFollowCreator = (id) => {
-    return { type: FOLLOW, id }
+    return {type: FOLLOW, id}
 }
 
 export const removeFollowCreator = (id) => {
-    return { type: UNFOLLOW, id }
+    return {type: UNFOLLOW, id}
 }
 
-export const getUsers = (users) => {
-    return { type: GET_USERS, users}
+export const getUsersCreator = (users) => {
+    return {type: GET_USERS, users}
 }
 
 export default usersReducer
