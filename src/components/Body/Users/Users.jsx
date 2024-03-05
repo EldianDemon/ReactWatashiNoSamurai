@@ -4,10 +4,12 @@ import axios from 'axios';
 
 const Users = (props) => {
 
-    if(props.users.length === 0) {
-        axios.get('https://social-network.samuraijs.com/api/1.0/users').then(response => {
-            props.setusers(response.data.items)
-        })
+    let GetUsers = () => {
+        if(props.users.length === 0) {
+            axios.get('https://social-network.samuraijs.com/api/1.0/users').then(response => {
+                props.setusers(response.data.items)
+            })
+        }
     }
 
     let UsersOut = props.users.map(el => 
@@ -34,6 +36,7 @@ const Users = (props) => {
 
     return (
         <div className='container'>
+            <button onClick={GetUsers}>Get Users</button>
             <ul className={u.users__list}>
                 {UsersOut}
             </ul>
