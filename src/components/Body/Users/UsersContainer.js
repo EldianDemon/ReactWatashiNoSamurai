@@ -31,7 +31,7 @@ class UsersContainer extends React.Component {
     render() {
         return (
             <>
-            {/* Здесь должен быть лоадер  */}
+            {/* Здесь должен быть лоадер2  */}
             {this.props.isFetching ? <span>Идет фетчинг</span> : null}
                 <Users users={this.props.users}
                     unfollow={this.props.unfollow}
