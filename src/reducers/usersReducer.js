@@ -1,65 +1,97 @@
 let FOLLOW = 'FOLLOW'
 let UNFOLLOW = 'UNFOLLOW'
 let GET_USERS = 'GET-USERS'
+let GET_USERS_COUNT = 'GET-USERS-COUNT'
+let GET_PAGE = 'GET-PAGE'
+let TOGGLE_FETCHING = 'TOGGLE_FETCHING'
 
 const initialState = {
-    users: [
-        // {id: 1, followed: true, name: 'John'},
-        // {id: 2, followed: true, name: 'John'},
-        // {id: 3, followed: true, name: 'John'},
-        // {id: 4, followed: true, name: 'John'},
-    ]
+    users: [],
+    usersCount: 0,
+    pageSize: 5,
+    selectedPage: 1,
+    isFetching: false
 }
 
 const usersReducer = (state = initialState, action) => {
-    switch(action.type) {
+    switch (action.type) {
+
         case FOLLOW:
             return {
                 ...state,
-                users: state.users.map(
-                    el => {
-                        if (el.id === action.id) {
-                            return {...el, followed: true}
+                users: state.users.map(el => {
+                    if (action.id === el.id) {
+                        return {
+                            ...el, followed: true
                         }
-                        else return el
                     }
-                )
+                    else return el
+                })
             }
 
         case UNFOLLOW:
             return {
                 ...state,
-                users: state.users.map(
-                    el => {
-                        if (el.id === action.id) {
-                            return {...el, followed: false}
+                users: state.users.map(el => {
+                    if (action.id === el.id) {
+                        return {
+                            ...el, followed: false
                         }
-                        else return el
                     }
-                )
+                    else return el
+                })
             }
 
         case GET_USERS:
             return {
                 ...state,
-                users: [...action.users, ...state.users]
+                users: action.users
             }
 
-        default:
-            return state
+        case GET_USERS_COUNT:
+            return {
+                ...state,
+                usersCount: action.usersCount
+            }
+
+        case GET_PAGE:
+            return {
+                ...state,
+                selectedPage: action.selectedPage
+            }
+
+        case TOGGLE_FETCHING:
+            return {
+                ...state,
+                isFetching: action.status
+            }
+
+        default: return state
     }
 }
 
 export const addFollowCreator = (id) => {
-    return {type: FOLLOW, id}
+    return { type: FOLLOW, id }
 }
 
 export const removeFollowCreator = (id) => {
-    return {type: UNFOLLOW, id}
+    return { type: UNFOLLOW, id }
 }
 
 export const getUsersCreator = (users) => {
-    return {type: GET_USERS, users}
+    return { type: GET_USERS, users }
 }
 
-export default usersReducer
+export const getUsersCountCreator = (usersCount) => {
+    return { type: GET_USERS_COUNT, usersCount }
+}
+
+export const getPageCreator = (selectedPage) => {
+    return { type: GET_PAGE, selectedPage }
+}
+
+export const toggleFetchingCreator = (status) => {
+    return { type: TOGGLE_FETCHING, status }
+}
+
+export default usersReducer;
