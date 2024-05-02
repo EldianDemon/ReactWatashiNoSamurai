@@ -9,7 +9,7 @@ class UsersContainer extends React.Component {
     componentDidMount() {
         if (this.props.users.length === 0) {
             this.props.fetching(true)
-            axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.selectedPage}&count=${this.props.pageSize}`)
+            axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.selectedPage}&count=${this.props.pageSize}`, {withCredentials: true})
                 .then(response => {
                     this.props.fetching(false)
                     this.props.setusers(response.data.items)
@@ -21,7 +21,7 @@ class UsersContainer extends React.Component {
     changePage = (el) => {
         this.props.setpage(el)
         this.props.fetching(true)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${el}&count=${this.props.pageSize}`)
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${el}&count=${this.props.pageSize}`, {withCredentials: true})
             .then(response => {
                 this.props.fetching(false)
                 this.props.setusers(response.data.items)
