@@ -1,6 +1,8 @@
 const ADD_POST = 'ADD-POST'
+const GET_PROFILE = 'GET-PROFILE'
 
 const initialState = {
+    Profile: null,
     PostsData: [
         { id: 1, useravatar: 'https://virtus-img.cdnvideo.ru/images/quote-author/plain/19/197b6b3e81310f34eb61f70d60220492.png@jpg', username: 'Антон Логвинов', text: 'I wroute some text'},
         { id: 2, useravatar: 'https://avatars.mds.yandex.net/get-kinopoisk-post-img/1101693/4078d528153b49bbb0f1eb678d28ba20/960x540', username: 'Киану Ривз', text: 'I wroute some text'},
@@ -15,6 +17,10 @@ const initialState = {
 
 const profileReducer = (state = initialState, action) => {
     switch (action.type) {
+        case GET_PROFILE: return {
+            ...state,
+            Profile: action.profile
+        }
         case ADD_POST: {
             let stateCopy = {
                 ...state,
@@ -37,7 +43,11 @@ const profileReducer = (state = initialState, action) => {
 };
 
 export const addPostCreator = (text) => {
-    return { type: ADD_POST, text: text }
+    return { type: ADD_POST, text }
+}
+
+export const getProfile = (profile) => {
+    return {type: GET_PROFILE, profile}
 }
 
 export default profileReducer

@@ -1,13 +1,16 @@
 import React from "react"
 import u from './Users.module.css'
 import avatar from '../../../img/avatars/avatar.jpg'
+import { NavLink } from "react-router-dom"
 
 const Users = (props) => {
     let UsersOut = props.users.map(
         el =>
             <div className={u.user__container}>
                 <div className={u.users__item__left}>
-                    <img src={el.photos.small ? el.photos.small : avatar} alt='useravatar' className={u.users__avatar} />
+                    <NavLink to={`/profile/${el.id}`}>
+                        <img src={el.photos.small ? el.photos.small : avatar} alt='useravatar' className={u.users__avatar} />
+                    </NavLink>
                     {el.followed ? <button onClick={() => { props.unfollow(el.id) }} className={u.users__btn}>unfollow</button> : <button onClick={() => { props.follow(el.id) }} className={u.users__btn}>follow</button>}
                 </div>
                 <div className={u.users__item__right}>

@@ -14,7 +14,7 @@ const App = () => {
       <Nav />
       <div className='content'>
         <Routes>
-          <Route path='/profile' element={<ProfileContainer />} />
+          <Route path='/profile/:userId?' element={<ProfileContainer />} />
           <Route path='/messeges' element={<MessegesContainer />} />
           <Route path='/friends*' element={<FriendsContainer />} />
           <Route path='/users' element={<UsersContainer />} />
