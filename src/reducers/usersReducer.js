@@ -70,27 +70,27 @@ const usersReducer = (state = initialState, action) => {
     }
 }
 
-export const addFollowCreator = (id) => {
+export const follow = (id) => {
     return { type: FOLLOW, id }
 }
 
-export const removeFollowCreator = (id) => {
+export const unfollow = (id) => {
     return { type: UNFOLLOW, id }
 }
 
-export const getUsersCreator = (users) => {
+export const setusers = (users) => {
     return { type: GET_USERS, users }
 }
 
-export const getUsersCountCreator = (usersCount) => {
+export const setuserscount = (usersCount) => {
     return { type: GET_USERS_COUNT, usersCount }
 }
 
-export const getPageCreator = (selectedPage) => {
+export const setpage = (selectedPage) => {
     return { type: GET_PAGE, selectedPage }
 }
 
-export const toggleFetchingCreator = (status) => {
+export const fetching = (status) => {
     return { type: TOGGLE_FETCHING, status }
 }
 

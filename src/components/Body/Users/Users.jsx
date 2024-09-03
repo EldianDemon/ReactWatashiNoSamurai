@@ -2,7 +2,6 @@ import React from "react"
 import u from './Users.module.css'
 import avatar from '../../../img/avatars/avatar.jpg'
 import { NavLink } from "react-router-dom"
-import axios from "axios"
 
 const Users = (props) => {
     let UsersOut = props.users.map(
@@ -12,22 +11,10 @@ const Users = (props) => {
                     <NavLink to={`/profile/${el.id}`}>
                         <img src={el.photos.small ? el.photos.small : avatar} alt='useravatar' className={u.users__avatar} />
                     </NavLink>
-                    {el.followed ? <button onClick={() => { 
-                        axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${el.id}`, {withCredentials:true, headers: {"API-KEY": "04cfa829-c757-4b20-be89-c49025197ee7"}})
-                        .then(response => {
-                            if(response.data.resultCode == 0) {
-                                props.unfollow(el.id) 
-                            }
-                        })
-                    }} className={u.users__btn}>unfollow</button> 
-                    : <button onClick={() => { 
-                        axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${el.id}`, {}, {withCredentials:true, headers: {"API-KEY": "04cfa829-c757-4b20-be89-c49025197ee7"}})
-                        .then(response => {
-                            if(response.data.resultCode == 0) {
-                                props.follow(el.id) 
-                            }
-                        })
-                        }} className={u.users__btn}>follow</button>}
+                    {el.followed 
+                    ? <button onClick={() => {props.setUnfollow(el.id)}} className={u.users__btn}>unfollow</button> 
+                    : <button onClick={() => {props.setFollow(el.id)}} className={u.users__btn}>follow</button>
+                    }
                 </div>
                 <div className={u.users__item__right}>
                     <div className={u.users__item__right__l}>

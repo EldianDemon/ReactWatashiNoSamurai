@@ -1,41 +1,62 @@
 import React from 'react';
-import axios from 'axios';
-import { connect } from 'react-redux'
-import { addFollowCreator, getPageCreator, getUsersCountCreator, getUsersCreator, removeFollowCreator, toggleFetchingCreator } from '../../../reducers/usersReducer'
+import { connect } from 'react-redux';
+import { follow, unfollow, setusers, setuserscount, setpage, fetching } from './../../../reducers/usersReducer';
+import { usersAPI } from '../../../api/api';
 import Users from './Users'
 
 class UsersContainer extends React.Component {
 
     componentDidMount() {
         if (this.props.users.length === 0) {
-            this.props.fetching(true)
-            axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.selectedPage}&count=${this.props.pageSize}`, {withCredentials: true})
-                .then(response => {
-                    this.props.fetching(false)
-                    this.props.setusers(response.data.items)
-                    this.props.setuserscount(response.data.totalCount)
-                })
+            this.props.fetching(true);
+            usersAPI.getUsers(this.props.selectedPage, this.props.pageSize)
+                .then(data => {
+                    this.props.fetching(false);
+                    this.props.setusers(data.items);
+                    this.props.setuserscount(data.totalCount);
+                });
         }
     }
 
-    changePage = (el) => {
-        this.props.setpage(el)
-        this.props.fetching(true)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${el}&count=${this.props.pageSize}`, {withCredentials: true})
-            .then(response => {
-                this.props.fetching(false)
-                this.props.setusers(response.data.items)
-            })
+    changePage = (page) => {
+        this.props.setpage(page);
+        this.props.fetching(true);
+        usersAPI.getUsers(page, this.props.pageSize)
+            .then(data => {
+                this.props.fetching(false);
+                this.props.setusers(data.items);
+            });
+    }
+
+    setFollow = (id) => {
+        usersAPI.addFollow(id)
+            .then(data => {
+                if (data.resultCode === 0) {
+                    this.props.follow(id);
+                } else {
+                    console.log('Something went wrong');
+                }
+            });
+    }
+
+    setUnfollow = (id) => {
+        usersAPI.removeFollow(id)
+            .then(data => {
+                if (data.resultCode === 0) {
+                    this.props.unfollow(id);
+                } else {
+                    console.log('Something went wrong');
+                }
+            });
     }
 
     render() {
         return (
             <>
-            
-            {this.props.isFetching ? <span>Идет фетчинг</span> : null}
+                {this.props.isFetching ? <span>Идет фетчинг</span> : null}
                 <Users users={this.props.users}
-                    unfollow={this.props.unfollow}
-                    follow={this.props.follow}
+                    setFollow={this.setFollow}
+                    setUnfollow={this.setUnfollow}
                     usersCount={this.props.usersCount}
                     pageSize={this.props.pageSize}
                     selectedPage={this.props.selectedPage}
@@ -43,9 +64,7 @@ class UsersContainer extends React.Component {
                 />
             </>
         );
-
     }
-
 }
 
 const mapStateToProps = (state) => {
@@ -55,30 +74,9 @@ const mapStateToProps = (state) => {
         pageSize: state.usersPage.pageSize,
         selectedPage: state.usersPage.selectedPage,
         isFetching: state.usersPage.isFetching
-    }
+    };
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        follow: (id) => {
-            dispatch(addFollowCreator(id))
-        },
-        unfollow: (id) => {
-            dispatch(removeFollowCreator(id))
-        },
-        setusers: (users) => {
-            dispatch(getUsersCreator(users))
-        },
-        setuserscount: (userscount) => {
-            dispatch(getUsersCountCreator(userscount))
-        },
-        setpage: (selectedPage) => {
-            dispatch(getPageCreator(selectedPage))
-        },
-        fetching: (status) => {
-            dispatch(toggleFetchingCreator(status))
-        }
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(UsersContainer);
+export default connect(mapStateToProps, {
+    follow, unfollow, setusers, setuserscount, setpage, fetching
+})(UsersContainer);
