@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { follow, unfollow, setusers, setuserscount, setpage, fetching } from './../../../reducers/usersReducer';
+import { follow, unfollow, setusers, setuserscount, setpage, fetching, buttonstatus } from './../../../reducers/usersReducer';
 import { usersAPI } from '../../../api/api';
 import Users from './Users'
 
@@ -29,8 +29,10 @@ class UsersContainer extends React.Component {
     }
 
     setFollow = (id) => {
+        this.props.buttonstatus(true)
         usersAPI.addFollow(id)
             .then(data => {
+                this.props.buttonstatus(false)
                 if (data.resultCode === 0) {
                     this.props.follow(id);
                 } else {
@@ -40,8 +42,10 @@ class UsersContainer extends React.Component {
     }
 
     setUnfollow = (id) => {
+        this.props.buttonstatus(true)
         usersAPI.removeFollow(id)
             .then(data => {
+                this.props.buttonstatus(false)
                 if (data.resultCode === 0) {
                     this.props.unfollow(id);
                 } else {
@@ -57,6 +61,7 @@ class UsersContainer extends React.Component {
                 <Users users={this.props.users}
                     setFollow={this.setFollow}
                     setUnfollow={this.setUnfollow}
+                    buttonDisabled={this.props.buttonDisabled}
                     usersCount={this.props.usersCount}
                     pageSize={this.props.pageSize}
                     selectedPage={this.props.selectedPage}
@@ -73,10 +78,11 @@ const mapStateToProps = (state) => {
         usersCount: state.usersPage.usersCount,
         pageSize: state.usersPage.pageSize,
         selectedPage: state.usersPage.selectedPage,
-        isFetching: state.usersPage.isFetching
+        isFetching: state.usersPage.isFetching,
+        buttonDisabled: state.usersPage.buttonDisabled
     };
 }
 
 export default connect(mapStateToProps, {
-    follow, unfollow, setusers, setuserscount, setpage, fetching
+    follow, unfollow, buttonstatus, setusers, setuserscount, setpage, fetching
 })(UsersContainer);

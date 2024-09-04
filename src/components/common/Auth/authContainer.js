@@ -19,7 +19,6 @@ class AuthContainer extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-    debugger
     return {
         login: state.auth.data.login
     }

@@ -4,6 +4,7 @@ import avatar from '../../../img/avatars/avatar.jpg'
 import { NavLink } from "react-router-dom"
 
 const Users = (props) => {
+
     let UsersOut = props.users.map(
         el =>
             <div className={u.user__container}>
@@ -12,8 +13,8 @@ const Users = (props) => {
                         <img src={el.photos.small ? el.photos.small : avatar} alt='useravatar' className={u.users__avatar} />
                     </NavLink>
                     {el.followed 
-                    ? <button onClick={() => {props.setUnfollow(el.id)}} className={u.users__btn}>unfollow</button> 
-                    : <button onClick={() => {props.setFollow(el.id)}} className={u.users__btn}>follow</button>
+                    ? <button onClick={() => {props.setUnfollow(el.id)}} disabled={props.buttonDisabled} className={u.users__btn}>unfollow</button> 
+                    : <button onClick={() => {props.setFollow(el.id)}} disabled={props.buttonDisabled} className={u.users__btn}>follow</button>
                     }
                 </div>
                 <div className={u.users__item__right}>
