@@ -26,6 +26,7 @@
 }
 
 .users__btn {
+    cursor: pointer;
     width: 100%;
 }
 

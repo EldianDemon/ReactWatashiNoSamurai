@@ -12,7 +12,7 @@ const initialState = {
     pageSize: 5,
     selectedPage: 1,
     isFetching: false,
-    buttonDisabled: false
+    buttonDisabled: []
 }
 
 const usersReducer = (state = initialState, action) => {
@@ -45,6 +45,9 @@ const usersReducer = (state = initialState, action) => {
             return {
                 ...state,
                 buttonDisabled: action.status
+                ? [...state.buttonDisabled, action.id]
+                : state.buttonDisabled.filter(id => id != action.id)
+
             }
         case GET_USERS:
             return {
@@ -79,8 +82,8 @@ export const unfollow = (id) => {
     return { type: UNFOLLOW, id }
 }
 
-export const buttonstatus = (status) => {
-    return { type: BUTTON_STATUS, status}
+export const buttonstatus = (status, id) => {
+    return { type: BUTTON_STATUS, status, id}
 }
 
 export const setusers = (users) => {

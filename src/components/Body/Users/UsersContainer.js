@@ -29,10 +29,10 @@ class UsersContainer extends React.Component {
     }
 
     setFollow = (id) => {
-        this.props.buttonstatus(true)
+        this.props.buttonstatus(true, id)
         usersAPI.addFollow(id)
             .then(data => {
-                this.props.buttonstatus(false)
+                this.props.buttonstatus(false, id)
                 if (data.resultCode === 0) {
                     this.props.follow(id);
                 } else {
@@ -42,10 +42,10 @@ class UsersContainer extends React.Component {
     }
 
     setUnfollow = (id) => {
-        this.props.buttonstatus(true)
+        this.props.buttonstatus(true, id)
         usersAPI.removeFollow(id)
             .then(data => {
-                this.props.buttonstatus(false)
+                this.props.buttonstatus(false, id)
                 if (data.resultCode === 0) {
                     this.props.unfollow(id);
                 } else {

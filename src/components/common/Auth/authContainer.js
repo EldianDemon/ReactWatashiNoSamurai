@@ -1,15 +1,15 @@
 import React from "react";
 import { connect } from "react-redux";
 import Auth from "./auth";
-import axios from "axios";
 import { getAuth } from "../../../reducers/authReducer";
+import { getAuthAPI } from "../../../api/api";
 
 class AuthContainer extends React.Component {
     componentDidMount() {
-        axios.get(`https://social-network.samuraijs.com/api/1.0/auth/me`, {withCredentials: true})
-        .then(response => {
-            if(response.data.resultCode === 0) {
-                this.props.setAuth(response.data.data)
+        getAuthAPI()
+        .then(data => {
+            if(data.resultCode === 0) {
+                this.props.setAuth(data.data)
             }
         })
     }
