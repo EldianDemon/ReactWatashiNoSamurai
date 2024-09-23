@@ -1,57 +1,24 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { follow, unfollow, setusers, setuserscount, setpage, fetching, buttonstatus } from './../../../reducers/usersReducer';
-import { usersAPI } from '../../../api/api';
+import React from 'react'
+import { connect } from 'react-redux'
+import { follow, unfollow, setpage, buttonstatus, getUsersThunkCreator, setFollowThunkCreator, setUnfollowThunkCreator } from './../../../reducers/usersReducer'
 import Users from './Users'
 
 class UsersContainer extends React.Component {
 
     componentDidMount() {
-        if (this.props.users.length === 0) {
-            this.props.fetching(true);
-            usersAPI.getUsers(this.props.selectedPage, this.props.pageSize)
-                .then(data => {
-                    this.props.fetching(false);
-                    this.props.setusers(data.items);
-                    this.props.setuserscount(data.totalCount);
-                });
-        }
+        this.props.getUsersThunkCreator(this.props.selectedPage, this.props.pageSize)
     }
 
     changePage = (page) => {
-        this.props.setpage(page);
-        this.props.fetching(true);
-        usersAPI.getUsers(page, this.props.pageSize)
-            .then(data => {
-                this.props.fetching(false);
-                this.props.setusers(data.items);
-            });
+        this.props.getUsersThunkCreator(page)
     }
 
     setFollow = (id) => {
-        this.props.buttonstatus(true, id)
-        usersAPI.addFollow(id)
-            .then(data => {
-                this.props.buttonstatus(false, id)
-                if (data.resultCode === 0) {
-                    this.props.follow(id);
-                } else {
-                    console.log('Something went wrong');
-                }
-            });
+        this.props.setFollowThunkCreator(id)
     }
 
     setUnfollow = (id) => {
-        this.props.buttonstatus(true, id)
-        usersAPI.removeFollow(id)
-            .then(data => {
-                this.props.buttonstatus(false, id)
-                if (data.resultCode === 0) {
-                    this.props.unfollow(id);
-                } else {
-                    console.log('Something went wrong');
-                }
-            });
+        this.props.setUnfollowThunkCreator(id)
     }
 
     render() {
@@ -84,5 +51,6 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps, {
-    follow, unfollow, buttonstatus, setusers, setuserscount, setpage, fetching
+    getUsersThunkCreator, setFollowThunkCreator, setUnfollowThunkCreator,
+    follow, unfollow, buttonstatus, setpage
 })(UsersContainer);

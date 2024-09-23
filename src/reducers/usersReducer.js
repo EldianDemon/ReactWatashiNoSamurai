@@ -1,3 +1,4 @@
+import { usersAPI } from '../api/api'
 let FOLLOW = 'FOLLOW'
 let UNFOLLOW = 'UNFOLLOW'
 let BUTTON_STATUS = 'BUTTON_STATUS'
@@ -86,11 +87,11 @@ export const buttonstatus = (status, id) => {
     return { type: BUTTON_STATUS, status, id}
 }
 
-export const setusers = (users) => {
+const setusers = (users) => {
     return { type: GET_USERS, users }
 }
 
-export const setuserscount = (usersCount) => {
+const setuserscount = (usersCount) => {
     return { type: GET_USERS_COUNT, usersCount }
 }
 
@@ -98,8 +99,51 @@ export const setpage = (selectedPage) => {
     return { type: GET_PAGE, selectedPage }
 }
 
-export const fetching = (status) => {
+const fetching = (status) => {
     return { type: TOGGLE_FETCHING, status }
+}
+
+export const getUsersThunkCreator = (selectedPage, pageSize) => {
+    return (dispatch) => {
+        dispatch(fetching(true))
+            usersAPI.getUsers(selectedPage, pageSize)
+                .then(data => {
+                    dispatch(fetching(false))
+                    dispatch(setusers(data.items))
+                    dispatch(setuserscount(data.totalCount))
+                })
+    }
+}
+
+export const setFollowThunkCreator = (id) => {
+    return (dispatch) => {
+        dispatch(buttonstatus(true, id))
+        usersAPI.addFollow(id)
+            .then(data => {
+                dispatch(buttonstatus(false, id))
+                if (data.resultCode === 0) {
+                    dispatch(follow(id))
+                } else {
+                    console.log('Something went wrong');
+                }
+            });
+    }
+}
+
+export const setUnfollowThunkCreator = (id) => {
+    return (dispatch) => {
+        dispatch(buttonstatus(true, id))
+        usersAPI.removeFollow(id)
+            .then(data => {
+                dispatch(buttonstatus(false, id))
+                if (data.resultCode === 0) {
+                    dispatch(unfollow(id))
+                    
+                } else {
+                    console.log('Something went wrong');
+                }
+            });
+    }
 }
 
 export default usersReducer
