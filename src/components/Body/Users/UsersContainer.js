@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { follow, unfollow, setpage, buttonstatus, getUsersThunkCreator, setFollowThunkCreator, setUnfollowThunkCreator } from './../../../reducers/usersReducer'
+import { follow, unfollow, getUsersThunkCreator, setFollowThunkCreator, setUnfollowThunkCreator } from './../../../reducers/usersReducer'
 import Users from './Users'
 
 class UsersContainer extends React.Component {
@@ -52,5 +52,5 @@ const mapStateToProps = (state) => {
 
 export default connect(mapStateToProps, {
     getUsersThunkCreator, setFollowThunkCreator, setUnfollowThunkCreator,
-    follow, unfollow, buttonstatus, setpage
-})(UsersContainer);
+    follow, unfollow,
+})(UsersContainer)

@@ -1,17 +1,11 @@
-import React from "react";
-import { connect } from "react-redux";
-import Auth from "./auth";
-import { getAuth } from "../../../reducers/authReducer";
-import { getAuthAPI } from "../../../api/api";
+import React from "react"
+import { connect } from "react-redux"
+import Auth from "./auth"
+import { authThunkCreator } from "../../../reducers/authReducer"
 
 class AuthContainer extends React.Component {
     componentDidMount() {
-        getAuthAPI()
-        .then(data => {
-            if(data.resultCode === 0) {
-                this.props.setAuth(data.data)
-            }
-        })
+        this.props.authThunkCreator()
     }
     render() {
         return <Auth {...this.props} />
@@ -24,12 +18,6 @@ const mapStateToProps = (state) => {
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        setAuth: (data) => {
-            dispatch(getAuth(data))
-        }
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(AuthContainer)
+export default connect(mapStateToProps, {
+    authThunkCreator,
+})(AuthContainer)

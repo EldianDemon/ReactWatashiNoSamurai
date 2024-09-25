@@ -1,5 +1,7 @@
+import { profileAPI } from '../api/api'
 const ADD_POST = 'ADD-POST'
 const GET_PROFILE = 'GET-PROFILE'
+
 
 const initialState = {
     Profile: null,
@@ -46,8 +48,20 @@ export const addPostCreator = (text) => {
     return { type: ADD_POST, text }
 }
 
-export const getProfile = (profile) => {
+const getProfile = (profile) => {
     return {type: GET_PROFILE, profile}
+}
+
+export const getProfileThunkCreator = (id) => {
+    return(dispatch) => {
+        if(!id) {
+            id = 11
+        }
+        profileAPI.getProfile(id)
+        .then(data => {
+            dispatch(getProfile(data))
+        })
+    }
 }
 
 export default profileReducer

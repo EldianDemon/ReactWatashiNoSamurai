@@ -1,3 +1,4 @@
+import { getAuthAPI } from '../api/api'
 const GET_AUTH = 'GET_AUTH'
 
 const initialState = {
@@ -24,6 +25,17 @@ const authReducer = (state = initialState, action) => {
 
 export const getAuth = (data) => {
     return {type: GET_AUTH, data}
+}
+
+export const authThunkCreator = () => {
+    return(dispatch) => {
+        getAuthAPI()
+        .then(data => {
+            if(data.resultCode === 0) {
+                dispatch(getAuth(data.data))
+            }
+        })
+    }
 }
 
 export default authReducer

@@ -12,7 +12,7 @@ const Profile = (props) => {
 
     let ClickAddPost = () => {
         let text = RefText.current.value
-        props.addPost(text)
+        props.addPostCreator(text)
     }
 
     if(!props.Profile) {
