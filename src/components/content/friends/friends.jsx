@@ -1,6 +1,6 @@
-import React from "react";
-import Friend from './Friend/Friend'
-import f from './Friends.module.css'
+import React from 'react'
+import Friend from './friend/friend'
+import f from './friends.module.css'
 
 const Friends = (props) => {
 

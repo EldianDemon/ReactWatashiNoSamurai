@@ -1,6 +1,6 @@
-import Messeges from "./Messeges";
-import { connect } from "react-redux";
-import { addMessegeActionCreator } from "../../../reducers/messegesReducer";
+import Messeges from './messeges'
+import { connect } from 'react-redux'
+import { addMessegeActionCreator } from '../../../reducers/messegesReducer'
 
 const mapStateToProps = (state) => {
     return {

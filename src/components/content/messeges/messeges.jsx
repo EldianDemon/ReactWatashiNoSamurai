@@ -1,6 +1,6 @@
-import React, { useRef } from "react";
-import m from './Messeges.module.css';
-import Messege from "./Messege/Messege";
+import React, { useRef } from 'react'
+import m from './messeges.module.css'
+import Messege from './messege/messege'
 
 const Messeges = (props) => {
     let MessegesOut = props.MessegesData.map(

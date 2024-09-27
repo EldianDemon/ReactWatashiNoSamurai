@@ -1,7 +1,7 @@
-import React from "react"
-import { connect } from "react-redux"
-import Auth from "./auth"
-import { authThunkCreator } from "../../../reducers/authReducer"
+import React from 'react'
+import { connect } from 'react-redux'
+import Auth from './auth'
+import { authThunkCreator } from '../../../reducers/authReducer'
 
 class AuthContainer extends React.Component {
     componentDidMount() {

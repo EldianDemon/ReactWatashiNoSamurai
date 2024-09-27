@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { addPostCreator, getProfileThunkCreator } from '../../../reducers/profileReducer'
-import Profile from './Profile'
+import Profile from './profile'
 
 export function withRouter(Children){
     return(props)=>{

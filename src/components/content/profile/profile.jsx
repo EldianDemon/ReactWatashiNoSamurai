@@ -1,6 +1,6 @@
-import React from 'react';
-import Post from './Post/Post';
-import p from './Profile.module.css';
+import React from 'react'
+import Post from './post/post'
+import p from './profile.module.css'
 
 const Profile = (props) => {
 

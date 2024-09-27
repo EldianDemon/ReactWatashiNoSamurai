@@ -1,7 +1,7 @@
-import React from "react";
-import f from '../Friends.module.css';
-import p from '../../Profile/Profile.module.css';
-import { NavLink } from "react-router-dom";
+import React from 'react'
+import f from '../friends.module.css'
+import p from '../../profile/profile.module.css'
+import { NavLink } from 'react-router-dom'
 
 const Friend = (props) => {
     return(

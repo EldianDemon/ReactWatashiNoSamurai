@@ -1,11 +1,11 @@
-import { Routes, Route } from 'react-router-dom';
-import './App.css';
-import Header from './components/Header/Header'
-import Nav from './components/Nav/Nav'
-import ProfileContainer from './components/Body/Profile/ProfileContainer';
-import MessegesContainer from './components/Body/Messeges/MessegesContainer';
-import FriendsContainer from './components/Body/Friends/FriendsContainer';
-import UsersContainer from './components/Body/Users/UsersContainer';
+import { Routes, Route } from 'react-router-dom'
+import './App.css'
+import Header from './components/header/header'
+import Nav from './components/nav/nav'
+import ProfileContainer from './components/content/profile/profileContainer'
+import MessegesContainer from './components/content/messeges/messegesContainer'
+import FriendsContainer from './components/content/friends/friendsContainer'
+import UsersContainer from './components/content/users/usersContainer'
 
 const App = () => {
   return (

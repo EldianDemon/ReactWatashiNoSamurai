@@ -1,4 +1,4 @@
-const ADD_MESSEGE = 'ADD-MESSEGE';
+const ADD_MESSEGE = 'ADD-MESSEGE'
 
 const initialState = {
     MessegesData: [

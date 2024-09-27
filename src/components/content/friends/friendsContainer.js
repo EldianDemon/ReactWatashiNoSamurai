@@ -1,6 +1,6 @@
-import Friends from "./Friends";
-import { connect } from "react-redux";
-import { addFriendCreator } from "../../../reducers/friendsReducer";
+import Friends from './friends'
+import { connect } from 'react-redux'
+import { addFriendCreator } from '../../../reducers/friendsReducer'
 
 let mapStateToProps = (state) => {
     return {

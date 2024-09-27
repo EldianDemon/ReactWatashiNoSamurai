@@ -1,7 +1,7 @@
-import React from "react"
-import u from './Users.module.css'
+import React from 'react'
+import u from './users.module.css'
 import avatar from '../../../img/avatars/avatar.jpg'
-import { NavLink } from "react-router-dom"
+import { NavLink } from 'react-router-dom'
 
 const Users = (props) => {
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { follow, unfollow, getUsersThunkCreator, setFollowThunkCreator, setUnfollowThunkCreator } from './../../../reducers/usersReducer'
-import Users from './Users'
+import { follow, unfollow, getUsersThunkCreator, setFollowThunkCreator, setUnfollowThunkCreator } from '../../../reducers/usersReducer'
+import Users from './users'
 
 class UsersContainer extends React.Component {
 
