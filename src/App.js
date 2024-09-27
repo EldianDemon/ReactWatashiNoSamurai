@@ -1,17 +1,17 @@
-import './App.css';
-import Header from './components/Header/Header'
-import Nav from './components/Nav/Nav'
+import './App.css'
+import Header from './components/header/header'
+import Nav from './components/nav/nav'
 
-const App = () => {
+function App() {
   return (
     <div className='App'>
       <Header />
       <Nav />
       <div className='content'>
-        
+
       </div>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

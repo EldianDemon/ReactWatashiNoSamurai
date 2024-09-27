@@ -1,12 +1,12 @@
-import React from "react"
-import h from './Header.module.css'
+import React from 'react'
+import h from './header.module.css'
 
 const Header = () => {
     return (
         <header className={h.header}>
-            <img src='' alt='logo' className={h.header__logo}></img>
+            Header
         </header>
-    );
+    )
 }
 
-export default Header;
+export default Header

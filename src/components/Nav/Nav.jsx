@@ -1,14 +1,11 @@
-import React from "react";
-import n from './Nav.module.css';
+import React from 'react'
+import n from './nav.module.css'
 
-const Nav = (props) => {
+const Nav = () => {
 
     return (
         <nav className={n.nav}>
-            <h3 className={n.nav__head}>Navigation</h3>
-            <ul className={n.nav__list}>
-                
-            </ul>
+           nav
         </nav>
     );
 }
