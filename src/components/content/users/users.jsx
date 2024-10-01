@@ -2,9 +2,10 @@ import React from 'react'
 import u from './users.module.css'
 import avatar from '../../../img/avatars/avatar.jpg'
 import { NavLink } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 const Users = (props) => {
-
+    
     let UsersOut = props.users.map(
         el =>
             <div className={u.user__container}>
@@ -45,6 +46,12 @@ const Users = (props) => {
     let curPF = ((curP - 5) < 0) ? 0 : curP - 5;
     let curPL = curP + 5;
     let slicedPages = Pages.slice(curPF, curPL);
+    
+    const navigate = useNavigate()
+    if(props.auth == false) {
+        navigate('/login')
+        return null
+    }
 
     return (
         <div className='container'>

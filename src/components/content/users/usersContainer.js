@@ -25,7 +25,9 @@ class UsersContainer extends React.Component {
         return (
             <>
                 {this.props.isFetching ? <span>Идет фетчинг</span> : null}
-                <Users users={this.props.users}
+                <Users 
+                    auth={this.props.auth}
+                    users={this.props.users}
                     setFollow={this.setFollow}
                     setUnfollow={this.setUnfollow}
                     buttonDisabled={this.props.buttonDisabled}
@@ -35,12 +37,13 @@ class UsersContainer extends React.Component {
                     changePage={this.changePage}
                 />
             </>
-        );
+        )
     }
 }
 
 const mapStateToProps = (state) => {
     return {
+        auth: state.auth.auth,
         users: state.usersPage.users,
         usersCount: state.usersPage.usersCount,
         pageSize: state.usersPage.pageSize,

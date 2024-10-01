@@ -6,6 +6,7 @@ import ProfileContainer from './components/content/profile/profileContainer'
 import MessegesContainer from './components/content/messeges/messegesContainer'
 import FriendsContainer from './components/content/friends/friendsContainer'
 import UsersContainer from './components/content/users/usersContainer'
+import AuthContainer from './components/common/auth/authContainer'
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
       <Nav />
       <div className='content'>
         <Routes>
+          <Route path='/login' element={<AuthContainer />} />
           <Route path='/profile/:userId?' element={<ProfileContainer />} />
           <Route path='/messeges' element={<MessegesContainer />} />
           <Route path='/friends*' element={<FriendsContainer />} />
@@ -24,4 +26,4 @@ const App = () => {
   );
 }
 
-export default App;
+export default App

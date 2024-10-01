@@ -14,10 +14,11 @@ class AuthContainer extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        login: state.auth.data.login
+        login: state.auth.data.login,
+        auth: state.auth.auth
     }
 }
 
 export default connect(mapStateToProps, {
-    authThunkCreator,
+    authThunkCreator
 })(AuthContainer)

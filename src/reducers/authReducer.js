@@ -8,7 +8,8 @@ const initialState = {
       id: null,
       email: null,
       login: null
-    }
+    },
+    auth: false
 }
 
 const authReducer = (state = initialState, action) => {
@@ -17,14 +18,15 @@ const authReducer = (state = initialState, action) => {
         case GET_AUTH:
             return {
                 ...state,
-                data: {...action.data}
+                data: {...action.data},
+                auth: action.status
             }
         default: return state
     }
 }
 
-export const getAuth = (data) => {
-    return {type: GET_AUTH, data}
+export const getAuth = (data, status) => {
+    return {type: GET_AUTH, data, status}
 }
 
 export const authThunkCreator = () => {
@@ -32,7 +34,7 @@ export const authThunkCreator = () => {
         getAuthAPI()
         .then(data => {
             if(data.resultCode === 0) {
-                dispatch(getAuth(data.data))
+                dispatch(getAuth(data.data, true))
             }
         })
     }
