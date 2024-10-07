@@ -47,12 +47,6 @@ const Users = (props) => {
     let curPL = curP + 5;
     let slicedPages = Pages.slice(curPF, curPL);
     
-    const navigate = useNavigate()
-    if(props.auth == false) {
-        navigate('/login')
-        return null
-    }
-
     return (
         <div className='container'>
             <ul className={u.users__pages__list}>

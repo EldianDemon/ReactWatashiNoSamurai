@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { addPostCreator, getProfileThunkCreator } from '../../../reducers/profileReducer'
 import Profile from './profile'
+import { withAuthRedirect } from '../../../hoc/withAuthRedirect'
 
 export function withRouter(Children){
     return(props)=>{
@@ -29,7 +30,9 @@ const mapStateToProps = (state) => {
     }
 }
 
-const WhitsUrlContainerComponent = withRouter(ProfileContainer)
+const RedirectProfileContainer = withAuthRedirect(ProfileContainer)
+
+const WhitsUrlContainerComponent = withRouter(RedirectProfileContainer)
 
 export default connect(mapStateToProps, {
     getProfileThunkCreator,
