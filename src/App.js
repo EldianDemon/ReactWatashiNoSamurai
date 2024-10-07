@@ -13,7 +13,7 @@ const App = () => {
     <div className='App'>
       <Header />
       <Nav />
-      <div className='content'>
+      <div className='content'> 
         <Routes>
           <Route path='/login' element={<AuthContainer />} />
           <Route path='/profile/:userId?' element={<ProfileContainer />} />

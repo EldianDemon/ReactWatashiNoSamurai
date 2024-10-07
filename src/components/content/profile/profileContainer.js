@@ -4,11 +4,12 @@ import { useParams } from 'react-router-dom'
 import { addPostCreator, getProfileThunkCreator } from '../../../reducers/profileReducer'
 import Profile from './profile'
 import { withAuthRedirect } from '../../../hoc/withAuthRedirect'
+import { compose } from 'redux'
 
-export function withRouter(Children){
-    return(props)=>{
-        const match  = {params: useParams()}
-        return <Children {...props}  match={match}/>
+export function withRouter(Children) {
+    return (props) => {
+        const match = { params: useParams() }
+        return <Children {...props} match={match} />
     }
 }
 
@@ -30,11 +31,11 @@ const mapStateToProps = (state) => {
     }
 }
 
-const RedirectProfileContainer = withAuthRedirect(ProfileContainer)
-
-const WhitsUrlContainerComponent = withRouter(RedirectProfileContainer)
-
-export default connect(mapStateToProps, {
-    getProfileThunkCreator,
-    addPostCreator,
-})(WhitsUrlContainerComponent)
+export default compose(
+    connect(mapStateToProps, {
+        getProfileThunkCreator,
+        addPostCreator,
+    }),
+    withRouter,
+    withAuthRedirect
+)(ProfileContainer)
