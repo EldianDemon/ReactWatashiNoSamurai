@@ -1,6 +1,7 @@
 import React from 'react'
 import Post from './post/post'
 import p from './profile.module.css'
+import StatusContainer from './status/statusContainer'
 
 const Profile = (props) => {
 
@@ -34,8 +35,10 @@ const Profile = (props) => {
                         </p>
                         <div className={p.profile__btm}>
                             <div className={p.profile__location}>
-                                <i></i>UserLocation</div><div className={p.profile__job}><i></i>UserJob</div>
-                            <div className={p.profile__info}><i></i>UserInfo</div>
+                                <i></i>UserLocation
+                            </div>
+                            <div className={p.profile__job}><i></i>UserJob</div>
+                            <StatusContainer />
                         </div>
                     </div>
                     <div className={p.profile_right}>
