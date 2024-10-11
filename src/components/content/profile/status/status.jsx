@@ -8,8 +8,8 @@ const Status = (props) => {
             }
             {props.editMode &&
                 <>
-                    <input type='text' value={props.status} onBlur={() => props.deactiveEditMode()} autoFocus={true} />
-                    <button>Apply</button>
+                    <input onChange={props.statusChange} type='text' value={props.status} onBlur={() => setTimeout(() => {props.deactiveEditMode()}, 200)} autoFocus={true} />
+                    <button onClick={() => props.applyChanges()}>Apply</button>
                 </>
             }
         </div>

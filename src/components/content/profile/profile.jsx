@@ -17,7 +17,7 @@ const Profile = (props) => {
     }
 
     if(!props.Profile) {
-        console.log('fetching')
+        return <>Please, login...</>
     } else {
         return (
             <section className={p.profile}>

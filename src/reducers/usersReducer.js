@@ -109,6 +109,7 @@ export const getUsersThunkCreator = (selectedPage, pageSize) => {
             usersAPI.getUsers(selectedPage, pageSize)
                 .then(data => {
                     dispatch(fetching(false))
+                    dispatch(setpage(selectedPage))
                     dispatch(setusers(data.items))
                     dispatch(setuserscount(data.totalCount))
                 })

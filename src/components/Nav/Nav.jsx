@@ -3,7 +3,6 @@ import n from './nav.module.css'
 import { NavLink } from 'react-router-dom'
 
 const Nav = (props) => {
-
     return (
         <nav className={n.nav}>
             <h3 className={n.nav__head}>Navigation</h3>
