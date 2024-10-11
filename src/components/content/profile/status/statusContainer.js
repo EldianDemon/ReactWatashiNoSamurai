@@ -1,7 +1,7 @@
 import React from 'react'
 import Status from './status'
 import { connect } from 'react-redux'
-import { getStatusThunkCreator } from '../../../../reducers/profileReducer'
+import { getStatusThunkCreator, updateStatusThunkCreator } from '../../../../reducers/profileReducer'
 
 class StatusContainer extends React.Component {
     state = {
@@ -24,7 +24,7 @@ class StatusContainer extends React.Component {
         })
     }
     applyChanges = () => {
-        
+        this.props.updateStatusThunkCreator(this.state.status)
     }
     render() {
         return <Status {...this.props} 
@@ -39,8 +39,8 @@ class StatusContainer extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        status: state.profilePage.Profile.status
+        status: state.profilePage.status
     }
 }
 
-export default connect(mapStateToProps, {getStatusThunkCreator})(StatusContainer)
+export default connect(mapStateToProps, {getStatusThunkCreator, updateStatusThunkCreator})(StatusContainer)

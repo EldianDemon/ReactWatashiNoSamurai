@@ -22,7 +22,11 @@ const profileReducer = (state = initialState, action) => {
     switch (action.type) {
         case GET_PROFILE: return {
             ...state,
-            Profile: {...action.profile, status:'backStatus'}
+            Profile: {...action.profile}
+        }
+        case GET_STATUS: return {
+            ...state,
+            status: action.status
         }
         case ADD_POST: {
             let stateCopy = {
@@ -58,9 +62,6 @@ const getStatus = (status) => {
 
 export const getProfileThunkCreator = (id) => {
     return(dispatch) => { 
-        if(!id) {
-            getAuthAPI().then(data => id = data.data.id)
-        }
         profileAPI.getProfile(id)
         .then(data => {
             dispatch(getProfile(data))
