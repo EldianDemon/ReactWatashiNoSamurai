@@ -22,7 +22,7 @@ const friendsReducer = (state = initialState, action) => {
                     {
                         id: 10,
                         useravatar: 'https://posterspy.com/wp-content/uploads/2019/08/Homelander-Portrait-Smaller.jpg',
-                        username: action.username,
+                        username: action.object.username,
                         userabout: 'lorem imptum huipsum'
                     },
                     ...state.FriendsData
@@ -34,10 +34,10 @@ const friendsReducer = (state = initialState, action) => {
             return state;
         }
     }
-};
+}
 
-export const addFriendCreator = (username) => {
-    return { type: ADD_FRIEND, username: username }
+export const addFriendCreator = (object) => {
+    return { type: ADD_FRIEND, object }
 }
 
 export default friendsReducer

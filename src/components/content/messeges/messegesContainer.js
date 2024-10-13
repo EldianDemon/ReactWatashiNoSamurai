@@ -1,6 +1,18 @@
-import Messeges from './messeges'
+import React from 'react'
 import { connect } from 'react-redux'
+import { reduxForm } from 'redux-form'
+import Messeges from './messeges'
 import { addMessegeActionCreator } from '../../../reducers/messegesReducer'
+
+class MessegesContainer extends React.Component {
+    onSubmit = (formData) => {
+        console.log(formData)
+        this.props.addMessegeActionCreator(formData)
+    }
+    render() {
+        return <MessegesReduxFormContainer onSubmit={this.onSubmit} MessegesData={this.props.MessegesData} />
+    }
+}
 
 const mapStateToProps = (state) => {
     return {
@@ -8,14 +20,7 @@ const mapStateToProps = (state) => {
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        AddMessege: (text) => {
-            dispatch(addMessegeActionCreator(text))
-        }
-    }
-}
+const MessegesReduxFormContainer = reduxForm({form: 'messeges'})(Messeges)
 
-const MessegesContainer = connect(mapStateToProps, mapDispatchToProps)(Messeges)
-
-export default MessegesContainer;
+MessegesContainer = connect(mapStateToProps, {addMessegeActionCreator})(MessegesContainer)
+export default MessegesContainer

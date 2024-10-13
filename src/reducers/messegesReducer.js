@@ -23,18 +23,18 @@ const messegesReducer = (state = initialState, action) => {
                     {
                         id: action.id,
                         owner: true,
-                        text: action.text
+                        text: action.object.messege
                     }
                 ]
             };
             return stateCopy
         default:
-            return state;
+            return state
     }
 };
 
-export const addMessegeActionCreator = (text) => {
-    return { type: ADD_MESSEGE, id: 2, text: text }
+export const addMessegeActionCreator = (object) => {
+    return { type: ADD_MESSEGE, id: 2, object }
 };
 
 export default messegesReducer;
