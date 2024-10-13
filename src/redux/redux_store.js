@@ -14,6 +14,8 @@ const reducers = combineReducers({
         usersPage: usersReducer
     });
 
-const store = createStore(reducers, applyMiddleware(thunk));
+const store = createStore(reducers, applyMiddleware(thunk))
+
+window.store = store
 
 export default store

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Status from './status'
 import { connect } from 'react-redux'
 import { getStatusThunkCreator, updateStatusThunkCreator } from '../../../../reducers/profileReducer'
@@ -7,6 +7,13 @@ class StatusContainer extends React.Component {
     state = {
         editMode: false,
         status: this.props.status
+    }
+    componentDidUpdate(prevProps, prevState) {
+        if(prevProps.status !== this.props.status) {
+            this.setState({
+                status: this.props.status
+            })
+        }
     }
     activeEditMode = () => {
         this.setState({

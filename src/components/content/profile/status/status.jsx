@@ -4,7 +4,7 @@ const Status = (props) => {
     return (
         <div className={p.profile__info}>
             {!props.editMode &&
-                <span onDoubleClick={() => props.activeEditMode()}>{props.status}</span>
+                <span onDoubleClick={() => props.activeEditMode()}>{props.status ? props.status : '------------'}</span>
             }
             {props.editMode &&
                 <>
