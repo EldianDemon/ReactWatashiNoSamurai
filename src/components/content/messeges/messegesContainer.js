@@ -5,12 +5,12 @@ import Messeges from './messeges'
 import { addMessegeActionCreator } from '../../../reducers/messegesReducer'
 
 class MessegesContainer extends React.Component {
-    onSubmit = (formData) => {
+    addMessegeSubmit = (formData) => {
         console.log(formData)
         this.props.addMessegeActionCreator(formData)
     }
     render() {
-        return <MessegesReduxFormContainer onSubmit={this.onSubmit} MessegesData={this.props.MessegesData} />
+        return <MessegesReduxFormContainer onSubmit={this.addMessegeSubmit} MessegesData={this.props.MessegesData} />
     }
 }
 

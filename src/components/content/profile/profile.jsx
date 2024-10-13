@@ -2,6 +2,7 @@ import React from 'react'
 import Post from './post/post'
 import p from './profile.module.css'
 import StatusContainer from './status/statusContainer'
+import { Field } from 'redux-form'
 
 const Profile = (props) => {
 
@@ -9,14 +10,7 @@ const Profile = (props) => {
         el => <li><Post text={el.text} /></li>
     )
 
-    let RefText = React.createRef()
-
-    let ClickAddPost = () => {
-        let text = RefText.current.value
-        props.addPostCreator(text)
-    }
-
-    if(!props.Profile) {
+    if (!props.Profile) {
         return <>Please, login...</>
     } else {
         return (
@@ -31,7 +25,7 @@ const Profile = (props) => {
                     <div className={p.profile__body}>
                         <h3 className={p.profile__name}>{props.Profile.fullName}</h3>
                         <p className={p.profile__dscr}>
-    
+
                         </p>
                         <div className={p.profile__btm}>
                             <div className={p.profile__location}>
@@ -44,21 +38,20 @@ const Profile = (props) => {
                     <div className={p.profile_right}>
                         <button className={`${p.btn} ${p.profile__edit__btn}`}>
                             <a className={p.profile__edit__link}>Редактировать профиль</a>
-                        </button><button className={`${p.btn} ${p.profile__more}`}>
+                        </button>
+                        <button className={`${p.btn} ${p.profile__more}`}>
                             <a className={p.profile__more__link}>Еще</a><i></i>
                         </button>
                     </div>
                 </div>
                 <div className={`container ${p.from__container}`}>
-                    <div className={p.profile__form}>
+                    <form onSubmit={props.handleSubmit} className={p.profile__form}>
                         <h3>Создать пост</h3>
-                        <textarea ref={RefText} className={p.profile__textarea}>
-    
-                        </textarea>
-                        <button onClick={ClickAddPost} className={`${p.btn} ${p.profile__btn}`}>
+                        <Field component={'textarea'} name='post' className={p.profile__textarea} />
+                        <button className={`${p.btn} ${p.profile__btn}`}>
                             Отправить
                         </button>
-                    </div>
+                    </form>
                     <ul className={p.posts__list}>
                         {PostsOut}
                     </ul>
@@ -67,7 +60,7 @@ const Profile = (props) => {
         );
     }
 
-    
+
 }
 
 export default Profile;

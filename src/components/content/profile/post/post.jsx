@@ -6,7 +6,7 @@ const Post = (props) => {
         <div className={p.posts__item}>
             <p className={p.posts__dscr}>{props.text}</p>
         </div>
-    );
+    )
 }
 
-export default Post;
+export default Post

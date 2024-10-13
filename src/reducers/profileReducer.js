@@ -36,7 +36,7 @@ const profileReducer = (state = initialState, action) => {
                         id: 10,
                         useravatar: 'https://posterspy.com/wp-content/uploads/2019/08/Homelander-Portrait-Smaller.jpg',
                         username: 'Watashi',
-                        text: action.text
+                        text: action.object.post
                     },
                     ...state.PostsData
                 ]
@@ -49,8 +49,8 @@ const profileReducer = (state = initialState, action) => {
     }
 }
 
-export const addPostCreator = (text) => {
-    return { type: ADD_POST, text }
+export const addPostCreator = (object) => {
+    return { type: ADD_POST, object }
 }
 
 const getProfile = (profile) => {
