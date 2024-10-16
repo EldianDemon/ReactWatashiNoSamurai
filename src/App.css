@@ -5,7 +5,9 @@ html {
 
 :root {
   --main-color: white;
-  --back-color: rgb(48, 48, 48);;
+  --back-color: rgb(48, 48, 48);
+  --block-gap: 10px;
+  --block-radius: 10px;
 }
 
 .App {
@@ -15,11 +17,29 @@ html {
   grid-template-areas: "h h" "n s";
   grid-template-rows: 120px 8fr;
   grid-template-columns: 2fr 8fr;
-  grid-gap: 10px;
+  grid-gap: var(--block-gap);
+}
+
+.block {
+  padding: 20px;
+  border-radius: var(--block-radius);
+  background-color: var(--back-color);
+}
+
+.header {
+  grid-area: h;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  grid-area: n;
+  max-height: 180px;
 }
 
 .content {
-  border-radius: 10px;
+  border-radius: var(--block-radius);
   background-color: rgb(48, 48, 48);
 }
 

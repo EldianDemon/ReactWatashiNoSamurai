@@ -2,9 +2,10 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { addPostCreator, getProfileThunkCreator, getStatusThunkCreator } from '../../../reducers/profileReducer'
-import Profile from './profile'
 import { compose } from 'redux'
 import { reduxForm } from 'redux-form'
+import { withAuthRedirect } from '../../../hoc/withAuthRedirect'
+import Profile from './profile'
 
 export function withRouter(Children) {
     return (props) => {
@@ -14,14 +15,16 @@ export function withRouter(Children) {
 }
 
 class ProfileContainer extends React.Component {
+
     addPost = (formData) => {
         this.props.addPostCreator(formData)
     }
     componentDidMount() {
         let userId = this.props.match.params.userId
-        if(!userId) userId = 31168
+        if (!userId) userId = 31168
         this.props.getProfileThunkCreator(userId)
         this.props.getStatusThunkCreator(userId)
+
     }
 
     render() {
@@ -36,7 +39,7 @@ const mapStateToProps = (state) => {
     }
 }
 
-const ProfileReduxFormContainer = reduxForm({form: 'profile'})(Profile)
+const ProfileReduxFormContainer = reduxForm({ form: 'profile' })(Profile)
 
 export default compose(
     connect(mapStateToProps, {
@@ -44,5 +47,6 @@ export default compose(
         getStatusThunkCreator,
         addPostCreator,
     }),
-    withRouter
+    withRouter,
+    withAuthRedirect
 )(ProfileContainer)

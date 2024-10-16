@@ -8,11 +8,11 @@ import { compose } from 'redux'
 class UsersContainer extends React.Component {
 
     componentDidMount() {
-        this.props.getUsersThunkCreator(this.props.selectedPage, this.props.pageSize)
+        this.props.getUsersThunkCreator(1, this.props.pageSize)
     }
 
     changePage = (page) => {
-        this.props.getUsersThunkCreator(page)
+        this.props.getUsersThunkCreator(page, this.props.pageSize)
     }
 
     setFollow = (id) => {

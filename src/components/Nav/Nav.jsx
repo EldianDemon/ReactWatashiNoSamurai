@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom'
 
 const Nav = (props) => {
     return (
-        <nav className={n.nav}>
+        <nav className={`${n.nav} block`}>
             <h3 className={n.nav__head}>Navigation</h3>
             <ul className={n.nav__list}>
                 <li className={n.nav__item}>
@@ -20,20 +20,8 @@ const Nav = (props) => {
                     <NavLink to="/users" className={({isActive}) => isActive ? `${n.active}`: n.nav__link}>Пользователи</NavLink>
                 </li>
             </ul>
-            <h3 className={n.nav__head}>Последние друзья</h3>
-            {/* <ul className={n.nav__friends}>
-                <li className={n.nav__friendsItem}>
-                    <img src={props.friendsPage.FriendsData[0].useravatar} alt="" className={`profile__avatar ${n.nav__avatar}`} />
-                </li>
-                <li className={n.nav__friendsItem}>
-                    <img src={props.friendsPage.FriendsData[1].useravatar} alt="" className={`profile__avatar ${n.nav__avatar}`} />
-                </li>
-                <li className={n.nav__friendsItem}>
-                    <img src={props.friendsPage.FriendsData[2].useravatar} alt="" className={`profile__avatar ${n.nav__avatar}`} />
-                </li>
-            </ul> */}
         </nav>
-    );
+    )
 }
 
-export default Nav;
+export default Nav

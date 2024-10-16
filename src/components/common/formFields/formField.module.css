@@ -1,0 +1,25 @@
+:root {
+    --errorColor: rgb(202, 36, 36);
+}
+
+.inputContainer {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.input {
+    width: 300px;
+    border: 1px solid gray;
+    border-radius: 15px;
+}
+
+.input__error {
+    outline: 1px solid var(--errorColor);
+}
+
+.input__errorText {
+    position: absolute;
+    top: -22px;
+    color: var(--errorColor);
+}
