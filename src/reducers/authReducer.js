@@ -1,14 +1,9 @@
-import { getAuthAPI } from '../api/api'
+import { stopSubmit } from 'redux-form'
+import { authAPI } from '../api/api'
 const GET_AUTH = 'GET_AUTH'
 
 const initialState = {
-    resultCode: 0,
-    messages: [],
-    data: {
-      id: null,
-      email: null,
-      login: null
-    },
+    data: {},
     auth: false
 }
 
@@ -31,13 +26,31 @@ export const getAuth = (data, status) => {
 
 export const authThunkCreator = () => {
     return(dispatch) => {
-        getAuthAPI()
+        authAPI.getAuth()
         .then(data => {
             if(data.resultCode === 0) {
                 dispatch(getAuth(data.data, true))
             }
         })
     }
+}
+
+export const loginThunkCreator = (email, password, rememberMe) => (dispatch) => {
+    authAPI.login(email, password, rememberMe)
+    .then(data => {
+        if(data.resultCode === 0) {
+            dispatch(authThunkCreator())
+        } dispatch(stopSubmit('login', {_error: 'everything is wrooong'})) 
+    })
+}
+
+export const logoutThunkCreator = () => (dispatch) => {
+    authAPI.logout()
+    .then(data => {
+        if(data.resultCode === 0) {
+            dispatch(getAuth(null, false))
+        } else console.log('something went wrong')
+    })
 }
 
 export default authReducer

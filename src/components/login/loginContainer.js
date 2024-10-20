@@ -2,7 +2,9 @@ import React from 'react'
 import Login from './login'
 import { connect } from 'react-redux'
 import { reduxForm } from 'redux-form'
+import { useNavigate } from 'react-router-dom'
 import { maxLengths } from '../../validators/validators'
+import { loginThunkCreator } from '../../reducers/authReducer'
 
 class LoginContainer extends React.Component {
     state = {
@@ -10,7 +12,7 @@ class LoginContainer extends React.Component {
     }
 
     onSubmit = (formData) => {
-        console.log(formData)
+        this.props.loginThunkCreator(formData.email, formData.password, formData.rememberMe)
     }
 
     componentDidUpdate(prevProps, prevState) {
@@ -22,8 +24,10 @@ class LoginContainer extends React.Component {
     }
    
     render() {
+        
+
         if(this.state.auth == false) return <LoginReduxForm onSubmit={this.onSubmit} maxLengths={maxLengths} />
-        else return <div>You have already authorized</div>
+        else return <>logged in</>
     }
 }
 
@@ -35,4 +39,4 @@ const mapStateToProps = (state) => {
 
 const LoginReduxForm = reduxForm({form: 'login'})(Login)
 
-export default connect(mapStateToProps)(LoginContainer)
+export default connect(mapStateToProps, {loginThunkCreator})(LoginContainer)

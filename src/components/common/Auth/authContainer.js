@@ -1,14 +1,19 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import Auth from './auth'
-import { authThunkCreator } from '../../../reducers/authReducer'
+import { authThunkCreator, logoutThunkCreator } from '../../../reducers/authReducer'
 
 class AuthContainer extends React.Component {
     componentDidMount() {
         this.props.authThunkCreator()
     }
+
+    logout = () => {
+        this.props.logoutThunkCreator()
+    }
+
     render() {
-        return <Auth {...this.props} />
+        return <Auth logout={this.logout} {...this.props} />
     }
 }
 
@@ -20,5 +25,5 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps, {
-    authThunkCreator
+    authThunkCreator, logoutThunkCreator
 })(AuthContainer)

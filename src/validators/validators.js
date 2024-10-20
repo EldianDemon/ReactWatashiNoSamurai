@@ -13,6 +13,7 @@ export const maxLengths = {
     max10: maxLength(10),
     max15: maxLength(15),
     max20: maxLength(20),
+    max30: maxLength(30),
 }
 
 
