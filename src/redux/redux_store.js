@@ -6,8 +6,10 @@ import messegesReducer from '../reducers/messegesReducer'
 import friendsReducer from '../reducers/friendsReducer'
 import usersReducer from '../reducers/usersReducer'
 import authReducer from '../reducers/authReducer'
+import appReducer from '../reducers/appReducer'
 
 const reducers = combineReducers({
+        app: appReducer,
         form: formReducer,
         auth: authReducer,
         profilePage: profileReducer,

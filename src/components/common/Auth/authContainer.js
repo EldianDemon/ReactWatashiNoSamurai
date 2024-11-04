@@ -5,7 +5,7 @@ import { authThunkCreator, logoutThunkCreator } from '../../../reducers/authRedu
 
 class AuthContainer extends React.Component {
     componentDidMount() {
-        this.props.authThunkCreator()
+        
     }
 
     logout = () => {

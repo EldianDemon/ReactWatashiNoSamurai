@@ -4,6 +4,7 @@ import { follow, unfollow, getUsersThunkCreator, setFollowThunkCreator, setUnfol
 import Users from './users'
 import { withAuthRedirect } from '../../../hoc/withAuthRedirect'
 import { compose } from 'redux'
+import { takeUsersSelectorCreator } from '../../../selectors/selectors'
 
 class UsersContainer extends React.Component {
 
@@ -44,7 +45,7 @@ class UsersContainer extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        users: state.usersPage.users,
+        users: takeUsersSelectorCreator(state),
         usersCount: state.usersPage.usersCount,
         pageSize: state.usersPage.pageSize,
         selectedPage: state.usersPage.selectedPage,
