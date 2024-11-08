@@ -6,5 +6,5 @@ const takeUsers = (state) => {
 }
 
 export const takeUsersSelectorCreator = createSelector(takeUsers, (users) => {
-    return users.filter(u => true)
+    return users.filter(u => true) //фейковая фильтрация для проверки работы реселекта
 })

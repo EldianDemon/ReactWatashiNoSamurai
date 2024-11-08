@@ -6,7 +6,7 @@ html {
 :root {
   --main-color: white;
   --back-color: rgb(48, 48, 48);
-  --block-gap: 10px;
+  --block-gap: 15px;
   --block-radius: 10px;
 }
 

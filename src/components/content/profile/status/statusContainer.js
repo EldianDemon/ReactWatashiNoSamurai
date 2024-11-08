@@ -4,43 +4,21 @@ import { connect } from 'react-redux'
 import { getStatusThunkCreator, updateStatusThunkCreator } from '../../../../reducers/profileReducer'
 
 class StatusContainer extends React.Component {
-    state = {
-        editMode: false,
-        status: this.props.status
-    }
-    componentDidUpdate(prevProps, prevState) {
-        if(prevProps.status !== this.props.status) {
-            this.setState({
-                status: this.props.status
-            })
-        }
-    }
-    activeEditMode = () => {
-        this.setState({
-            editMode: true
-        })
-    }
-    deactiveEditMode = () => {
-        this.setState({
-            editMode: false,
-        })
-    }
-    statusChange = (status) => {
-        this.setState({
-            status: status.currentTarget.value
-        })
-    }
-    applyChanges = () => {
-        this.props.updateStatusThunkCreator(this.state.status)
+  
+    // componentDidUpdate(prevProps, prevState) {
+    //     if (prevProps.status !== this.props.status) {
+    //         this.setState({
+    //             status: this.props.status
+    //         })
+    //     }
+    // }
+
+    applyChanges = (status) => {
+        debugger
+        this.props.updateStatusThunkCreator(status)
     }
     render() {
-        return <Status {...this.props} 
-        editMode={this.state.editMode} 
-        activeEditMode={this.activeEditMode} 
-        deactiveEditMode={this.deactiveEditMode} 
-        statusChange={this.statusChange}
-        applyChanges={this.applyChanges}
-        status={this.state.status} />
+        return <Status status={this.props.status} applyChanges={this.applyChanges} />
     }
 }
 
@@ -50,4 +28,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, {getStatusThunkCreator, updateStatusThunkCreator})(StatusContainer)
+export default connect(mapStateToProps, { getStatusThunkCreator, updateStatusThunkCreator })(StatusContainer)

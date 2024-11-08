@@ -1,15 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react'
 import p from './../profile.module.css'
 const Status = (props) => {
+
+    const [editMode, setEditMode] = useState(false)
+    const [status, editStatus] = useState(props.status)
+
     return (
         <div className={p.profile__info}>
-            {!props.editMode &&
-                <span onDoubleClick={() => props.activeEditMode()}>{props.status ? props.status : '------------'}</span>
+            {!editMode &&
+                <span onDoubleClick={() => {setEditMode(true)}}>{status ? status : '------------'}</span>
             }
-            {props.editMode &&
+            {editMode &&
                 <>
-                    <input onChange={props.statusChange} type='text' value={props.status} onBlur={() => setTimeout(() => {props.deactiveEditMode()}, 200)} autoFocus={true} />
-                    <button onClick={() => props.applyChanges()}>Apply</button>
+                    <input onChange={(e) => { editStatus(e.currentTarget.value)}} type='text' value={status} onBlur={() => setTimeout(() => {setEditMode(false)}, 200)} autoFocus={true} />
+                    <button onClick={() => props.applyChanges(status)}>Apply</button>
                 </>
             }
         </div>
