@@ -79,5 +79,12 @@ export const updateStatusThunkCreator = (status) => (dispatch) => {
             else console.log('something went wrong')
         })
 }
+export const sendPhotoThunkCreator = (img) => (dispatch) => {
+    profileAPI.sendAvatar(img.image)
+    .then(data => {
+        if(data.resultCode === 0) dispatch(getProfileThunkCreator(initialState.Profile.userId)) //Перезаписываем весь профиль
+        else console.log(data.messages)
+    })
+}
 
 export default profileReducer

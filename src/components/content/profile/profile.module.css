@@ -58,15 +58,40 @@ textarea {
     background-color: var(--back-color);
 }
 
+.profile__avatarContainer {
+    width: 150px;
+}
+
+.profile__imgContainer {
+    position: absolute;
+    cursor: pointer;
+    top: -95px;
+}
+
 .profile__avatar {
     position: relative;
-    top: -95px;
     width: 150px;
     height: 150px;
+    flex: 0 0 auto;
     object-fit:cover;
     object-position: 50% 20%;
     border-radius: 50%;
     background-color: rgb(175, 147, 83);
+}
+
+.profile__avatarChanger {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.3;
+}
+
+.profile__imgContainer:hover .profile__avatar {
+    filter: brightness(0.5);
+}
+.profile__imgContainer:hover .profile__avatarChanger {
+    opacity: 1;
 }
 
 .profile__body {

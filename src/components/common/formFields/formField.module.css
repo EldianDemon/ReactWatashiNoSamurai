@@ -23,3 +23,12 @@
     top: -22px;
     color: var(--errorColor);
 }
+
+
+.inputFile {
+    height: 100%;
+}
+
+/* .inputFile[type='file'] {
+    color: transparent;
+} */

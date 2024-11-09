@@ -50,6 +50,10 @@ export const profileAPI = {
     updateStatus(status) {
         return instance.put(`profile/status`, { status: status })
             .then(response => response.data)
+    },
+    sendAvatar(image) {
+        return instance.put(`profile/photo`, {image: image})
+        .then(response => response.data)
     }
 }
 

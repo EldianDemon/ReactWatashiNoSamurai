@@ -2,7 +2,6 @@ import React from 'react'
 import Login from './login'
 import { connect } from 'react-redux'
 import { reduxForm } from 'redux-form'
-import { useNavigate } from 'react-router-dom'
 import { maxLengths } from '../../validators/validators'
 import { loginThunkCreator } from '../../reducers/authReducer'
 

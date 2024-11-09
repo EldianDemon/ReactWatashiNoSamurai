@@ -1,16 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Post from './post/post'
 import p from './profile.module.css'
 import StatusContainer from './status/statusContainer'
 import { Field } from 'redux-form'
 import { required } from '../../../validators/validators'
+import AvatarContainer from './avatar/avatarContainer'
 
 const Profile = (props) => {
 
     let PostsOut = props.PostsData.map(
         el => <li><Post text={el.text} /></li>
     )
-    if(!props.Profile) return <div>Something went wrong</div>
+    if (!props.Profile) return <div>Something went wrong</div>
     return (
         <section className={p.profile}>
             <div className={p.profile__wallpaper}>
@@ -19,7 +20,9 @@ const Profile = (props) => {
                 </button>
             </div>
             <div className={`container ${p.profile__container}`}>
-                <img src={props.Profile.photos.large} alt="" className={p.profile__avatar} />
+                <div className={`${p.profile__avatarContainer}`}>
+                    <AvatarContainer />
+                </div>
                 <div className={p.profile__body}>
                     <h3 className={p.profile__name}>{props.Profile.fullName}</h3>
                     <p className={p.profile__dscr}>
