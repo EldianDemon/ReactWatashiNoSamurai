@@ -1,10 +1,14 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import p from './../profile.module.css'
 const Status = (props) => {
 
     const [editMode, setEditMode] = useState(false)
     const [status, editStatus] = useState(props.status)
 
+    useEffect(() => {
+        editStatus(props.status)
+    }, [props.status])
+    
     return (
         <div className={p.profile__info}>
             {!editMode &&

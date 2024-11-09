@@ -14,7 +14,6 @@ class StatusContainer extends React.Component {
     // }
 
     applyChanges = (status) => {
-        debugger
         this.props.updateStatusThunkCreator(status)
     }
     render() {
