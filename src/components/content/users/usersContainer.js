@@ -24,7 +24,7 @@ class UsersContainer extends React.Component {
         this.props.setUnfollowThunkCreator(id)
     }
 
-    render() {
+    render() { console.log('render')
         return (
             <>
                 {this.props.isFetching ? <span>Идет фетчинг</span> : null}

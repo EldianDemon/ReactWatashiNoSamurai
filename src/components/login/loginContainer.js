@@ -25,8 +25,8 @@ class LoginContainer extends React.Component {
     render() {
         
 
-        if(this.state.auth == false) return <LoginReduxForm onSubmit={this.onSubmit} maxLengths={maxLengths} />
-        else return <>logged in</>
+        if(!this.state.auth) return <LoginReduxForm onSubmit={this.onSubmit} maxLengths={maxLengths} />
+            else return <>logged in</>
     }
 }
 

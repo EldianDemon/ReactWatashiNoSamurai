@@ -5,8 +5,8 @@ import { Input } from '../common/formFields/formField'
 import l from './login.module.css'
 
 const Login = (props) => {
-    
-    return(
+
+    return (
         <div className={l.loginContainer}>
             <form onSubmit={props.handleSubmit} className={l.login__form}>
                 <label>
@@ -16,7 +16,7 @@ const Login = (props) => {
                     <Field component={Input} type='password' name={'password'} validate={[required, props.maxLengths.max10]} placeholder={'Password'} />
                 </label>
                 <label>
-                   <Field component={'input'} type={'checkbox'} name={'rememberMe'} /> Remember me
+                    <Field component={'input'} type={'checkbox'} name={'rememberMe'} /> Remember me
                 </label>
                 <button>Login</button>
                 <span>{props.error}</span>

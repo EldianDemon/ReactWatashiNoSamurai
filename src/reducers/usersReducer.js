@@ -1,4 +1,5 @@
 import { usersAPI } from '../api/api'
+import { followMaper } from '../utility/reducerHelper'
 let FOLLOW = 'FOLLOW'
 let UNFOLLOW = 'UNFOLLOW'
 let BUTTON_STATUS = 'BUTTON_STATUS'
@@ -18,36 +19,20 @@ const initialState = {
 
 const usersReducer = (state = initialState, action) => {
     switch (action.type) {
-        case FOLLOW:
-            return {
-                ...state,
-                users: state.users.map(el => {
-                    if (action.id === el.id) {
-                        return {
-                            ...el, followed: true
-                        }
-                    }
-                    else return el
-                })
-            }
-        case UNFOLLOW:
-            return {
-                ...state,
-                users: state.users.map(el => {
-                    if (action.id === el.id) {
-                        return {
-                            ...el, followed: false
-                        }
-                    }
-                    else return el
-                })
-            }
+        case FOLLOW: return {
+            ...state,
+            users: followMaper(state.users, action.id, { followed: true })
+        }
+        case UNFOLLOW: return {
+            ...state,
+            users: followMaper(state.users, action.id, { followed: false })
+        }
         case BUTTON_STATUS:
             return {
                 ...state,
                 buttonDisabled: action.status
-                ? [...state.buttonDisabled, action.id]
-                : state.buttonDisabled.filter(id => id != action.id)
+                    ? [...state.buttonDisabled, action.id]
+                    : state.buttonDisabled.filter(id => id !== action.id)
 
             }
         case GET_USERS:
@@ -83,8 +68,8 @@ export const unfollow = (id) => {
     return { type: UNFOLLOW, id }
 }
 
-export const buttonstatus = (status, id) => {
-    return { type: BUTTON_STATUS, status, id}
+const buttonstatus = (status, id) => {
+    return { type: BUTTON_STATUS, status, id }
 }
 
 const setusers = (users) => {
@@ -106,45 +91,37 @@ const fetching = (status) => {
 export const getUsersThunkCreator = (selectedPage, pageSize) => {
     return (dispatch) => {
         dispatch(fetching(true))
-            usersAPI.getUsers(selectedPage, pageSize)
-                .then(data => {
-                    dispatch(fetching(false))
-                    dispatch(setpage(selectedPage))
-                    dispatch(setusers(data.items))
-                    dispatch(setuserscount(data.totalCount))
-                })
+        usersAPI.getUsers(selectedPage, pageSize)
+            .then(data => {
+                dispatch(fetching(false))
+                dispatch(setpage(selectedPage))
+                dispatch(setusers(data.items))
+                dispatch(setuserscount(data.totalCount))
+            })
     }
 }
 
-export const setFollowThunkCreator = (id) => {
-    return (dispatch) => {
-        dispatch(buttonstatus(true, id))
-        usersAPI.addFollow(id)
-            .then(data => {
-                dispatch(buttonstatus(false, id))
-                if (data.resultCode === 0) {
-                    dispatch(follow(id))
-                } else {
-                    console.log('Something went wrong');
-                }
-            });
+const setFollowStatus = async (dispatch, id, apiMethod, followSuccess) => {
+    dispatch(buttonstatus(true, id))
+    let data = await apiMethod(id)
+    dispatch(buttonstatus(false, id))
+    if (data.resultCode === 0) {
+        dispatch(followSuccess(id))
+    } else {
+        console.log('Something went wrong')
     }
 }
 
-export const setUnfollowThunkCreator = (id) => {
-    return (dispatch) => {
-        dispatch(buttonstatus(true, id))
-        usersAPI.removeFollow(id)
-            .then(data => {
-                dispatch(buttonstatus(false, id))
-                if (data.resultCode === 0) {
-                    dispatch(unfollow(id))
-                    
-                } else {
-                    console.log('Something went wrong');
-                }
-            });
-    }
+export const setFollowThunkCreator = (id) => (dispatch) => {
+    const apiMethod = usersAPI.addFollow.bind(usersAPI)
+    const followSuccess = follow
+    setFollowStatus(dispatch, id, apiMethod, followSuccess)
+}
+
+export const setUnfollowThunkCreator = (id) => (dispatch) => {
+    const apiMethod = usersAPI.removeFollow.bind(usersAPI)
+    const followSuccess = unfollow
+    setFollowStatus(dispatch, id, apiMethod, followSuccess)
 }
 
 export default usersReducer
