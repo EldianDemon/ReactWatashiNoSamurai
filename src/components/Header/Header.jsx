@@ -1,6 +1,6 @@
 import React from 'react'
-import h from './header.module.css'
-import AuthContainer from '../common/auth/authContainer'
+import h from './Header.module.css'
+import AuthContainer from '../common/Auth/authContainer'
 
 const Header = () => {
     return (
